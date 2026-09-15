@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>Hello!</main>
+  <div>
+    <!-- Homepage content -->
+  </div>
 </template>

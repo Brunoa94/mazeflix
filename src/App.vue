@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import PageLayout from './layouts/PageLayout/PageLayout.vue'
 </script>
 
 <template>
-  <h1 class="text-black">Hello World!</h1>
-
-  <RouterView />
+  <PageLayout>
+    <RouterView />
+  </PageLayout>
 </template>
