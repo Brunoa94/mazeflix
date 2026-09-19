@@ -4,7 +4,6 @@ import type { HeadersType } from "../types/headers";
 const DOMAIN = import.meta.env.VITE_TV_MAZE_DOMAIN;
 
 const HEADERS: HeadersType = {
-  "Content-Type": "application/json",
   Accept: "application/json",
 };
 

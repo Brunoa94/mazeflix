@@ -1,7 +1,7 @@
-import type { GetParamsType } from '../types/apiClient'
 import { ApiError } from '../types/error'
+import type { HeadersType } from '../types/headers'
 
-export function createApiClient({ domain, headers }: GetParamsType) {
+export function createApiClient({ domain, headers }: { domain: string; headers: HeadersType }) {
   return {
     get: async <T>(path: string): Promise<T> => {
       const url = `${domain}${path}`
