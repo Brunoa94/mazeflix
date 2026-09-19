@@ -12,8 +12,8 @@ const { title, items } = defineProps<Props>()
 </script>
 
 <template>
-  <article class="flex flex-col gap-3 py-4">
-    <Heading as="h2">{{ title }}</Heading>
+  <section class="flex flex-col gap-3" :aria-labelledby="`section-${title}`">
+    <Heading as="h2" class="ml-4" :id="`section-${title}`">{{ title }}</Heading>
     <ShowList :items="items" />
-  </article>
+  </section>
 </template>

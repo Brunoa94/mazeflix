@@ -23,7 +23,7 @@ export function mapTvMazeShowToCatalogue({
   })
 
   genresMap.forEach((shows) => {
-    shows.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
+    shows.sort((a, b) => (b.rating?.average ?? 0) - (a.rating?.average ?? 0))
   })
 
   return genresMap
