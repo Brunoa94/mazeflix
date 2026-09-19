@@ -19,6 +19,7 @@
 
   /** Gradient */
   --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 100%);
+  --gradient-overlay-hero: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 1) 100%);
 
   /** Padding */
   --padding-horizontal-container-full: 0 2rem;
@@ -26,6 +27,10 @@
 
   /** Margin */
   --margin-left-horizontal-container-full: 2rem;
+
+  /** Backgrounds */
+  --color-bg-chip: #ffffff33;
+  --color-bg-chip-genre: #ffffff1a;
 }
 
 .overflow-scroll,

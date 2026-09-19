@@ -1,11 +1,28 @@
 <script setup lang="ts">
-import useShowCatalogue from '../composables/useShowCatalogue'
-import ShowSection from './ShowSection.vue'
+import Heading from '@/shared/components/Heading.vue'
+import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
+import ShowList from './ShowList.vue'
+import type { CatalogueType } from '../types/catalogue.ts'
 
-const { isLoading, item, error } = useShowCatalogue()
+interface Props {
+  catalogue: CatalogueType
+}
+
+const { catalogue } = defineProps<Props>()
 </script>
+
 <template>
-  <span v-if="isLoading">Is Loading...</span>
-  <span v-else-if="error">Has error...</span>
-  <ShowSection v-else :items="shows" :title="genre" v-for="[genre, shows] in item" :key="genre" />
+  <section
+    :items="shows"
+    :title="genre"
+    v-for="[genre, shows] in catalogue"
+    :key="genre"
+    class="flex flex-col gap-2 my-4"
+    :aria-labelledby="`section-${genre}`"
+  >
+    <Heading as="h2" class="p-horizontal-container-full" :id="`section-${genre}`">{{
+      genre
+    }}</Heading>
+    <ShowList :items="shows" />
+  </section>
 </template>
