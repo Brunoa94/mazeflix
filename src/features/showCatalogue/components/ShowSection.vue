@@ -13,7 +13,9 @@ const { title, items } = defineProps<Props>()
 
 <template>
   <section class="flex flex-col gap-3" :aria-labelledby="`section-${title}`">
-    <Heading as="h2" class="ml-4" :id="`section-${title}`">{{ title }}</Heading>
+    <Heading as="h2" class="p-horizontal-container-full" :id="`section-${title}`">{{
+      title
+    }}</Heading>
     <ShowList :items="items" />
   </section>
 </template>

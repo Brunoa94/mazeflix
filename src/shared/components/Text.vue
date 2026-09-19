@@ -4,13 +4,12 @@ type VariantType = 'body' | 'banner'
 type ColorsVariants = 'default' | 'warning' | 'success' | 'ghost'
 
 interface Props {
-  as?: AsType
+  as: AsType
   variant?: VariantType
   color?: ColorsVariants
 }
 
-const { as = 'p', variant = 'body', color = 'default' } = defineProps<Props>()
-
+const { as = 'p', variant, color = 'default' } = defineProps<Props>()
 const variantClass: Record<VariantType, string> = {
   body: 'text-lg font-normal',
   banner: 'text-md font-normal',
@@ -25,7 +24,7 @@ const colorClass: Record<ColorsVariants, string> = {
 </script>
 
 <template>
-  <component :is="as" :class="[variantClass[variant], colorClass[color]]">
+  <component :is="as" :class="[variant && variantClass[variant], colorClass[color]]">
     <slot />
   </component>
 </template>

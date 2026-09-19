@@ -18,8 +18,12 @@ const variantClass: Record<VariantType, string> = {
 </script>
 
 <template>
-  <ul :class="['overflow-scroll', variantClass[variant]]">
-    <li class="flex items-center first:ml-4" v-for="item in items" :key="item.id">
+  <ul :class="['overflow-x-scroll overflow-y-hidden', variantClass[variant]]">
+    <li
+      class="flex items-center first:ml-left-horizontal-container-full"
+      v-for="item in items"
+      :key="item.id"
+    >
       <ShowCard :item="item" />
     </li>
   </ul>

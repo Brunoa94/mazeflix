@@ -36,7 +36,7 @@ const backgroundImage = computed(() => item.image?.medium ?? placeholderImage)
     <ShowOverlay>
       <div class="h-full w-full flex flex-col justify-end gap-2 p-4 rounded-xl">
         <Banner v-if="item.rating.average">
-          <Text variant="banner">{{ item.rating.average }}</Text>
+          <Text as="span" variant="banner">{{ item.rating.average }}</Text>
         </Banner>
         <Heading as="h3"> {{ item.name }} </Heading>
       </div>

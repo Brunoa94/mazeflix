@@ -1,14 +1,40 @@
 @import 'tailwindcss';
 
 @theme {
+  /** Font */
+  --font-display: 'Satoshi', sans-serif;
+
+  /** Text */
+  --white-text: #ffff;
+
+  /** Colors */
+  --color-red-primary: #9c1111;
+  --color-red-rating: #ef4444;
+
+  --color-black-primary: #000;
+  --color-dark-gray-primary: #1c1c1c;
+
   --primary-color: #004d40;
   --secondary-color: #ffd200;
 
-  --white-text: #ffff;
-
-  --red-rating: #ef4444;
-
+  /** Gradient */
   --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 100%);
 
-  --font-display: 'Satoshi', sans-serif;
+  /** Padding */
+  --padding-horizontal-container-full: 0 2rem;
+  --padding-top-with-topnav: 5rem;
+
+  /** Margin */
+  --margin-left-horizontal-container-full: 2rem;
+}
+
+.overflow-scroll,
+.overflow-x-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.overflow-scroll::-webkit-scrollbar,
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
 }

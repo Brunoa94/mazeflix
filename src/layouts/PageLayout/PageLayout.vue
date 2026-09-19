@@ -4,9 +4,9 @@ import Footer from './Footer.vue'
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-black">
+  <div class="min-h-screen flex flex-col bg-dark-gray-primary">
     <Header />
-    <main class="flex-1">
+    <main class="flex-1 pt-top-with-topnav">
       <slot />
     </main>
     <Footer />
