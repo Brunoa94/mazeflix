@@ -22,6 +22,10 @@ interface TvMazeExternalsI {
   imdb: string | null
 }
 
+interface TvMazeAverageI {
+  average: number | null
+}
+
 export interface TvMazeShowI {
   id: number
   url: string
@@ -36,7 +40,7 @@ export interface TvMazeShowI {
   ended: string | null
   officialSite: string | null
   schedule: TvMazeScheduleI
-  rating: number | null
+  rating: TvMazeAverageI
   weight: number
   webChannel: TvMazeWebChannelI | null
   externals: TvMazeExternalsI

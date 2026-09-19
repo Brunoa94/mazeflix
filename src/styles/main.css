@@ -8,5 +8,7 @@
 
   --red-rating: #ef4444;
 
+  --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 100%);
+
   --font-display: 'Satoshi', sans-serif;
 }
