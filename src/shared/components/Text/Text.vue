@@ -24,7 +24,7 @@ const colorClass: Record<ColorsVariants, string> = {
 </script>
 
 <template>
-  <component :is="as" :class="[variant && variantClass[variant], colorClass[color]]">
+  <component :is="as" :class="[variant && variantClass[variant], color && colorClass[color]]">
     <slot />
   </component>
 </template>

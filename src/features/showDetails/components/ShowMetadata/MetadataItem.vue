@@ -10,7 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-2 border-t border-border-subtle pt-8">
+  <div class="flex flex-col items-center gap-2 pt-8">
     <Text as="span" color="ghost" class="text-xs tracking-widest">{{ label }}</Text>
     <Text as="p" variant="body">{{ value }}</Text>
   </div>

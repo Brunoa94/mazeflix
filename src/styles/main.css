@@ -16,14 +16,20 @@
 
   --primary-color: #004d40;
   --secondary-color: #ffd200;
+  --color-white: #fff;
 
   /** Gradient */
   --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 100%);
-  --gradient-overlay-hero: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 1) 100%);
+  --gradient-overlay-hero: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
 
   /** Padding */
   --padding-horizontal-container-full: 0 2rem;
-  --padding-top-with-topnav: 5rem;
+  --padding-top-with-topnav: 4.2rem;
 
   /** Margin */
   --margin-left-horizontal-container-full: 2rem;

@@ -1,28 +1,30 @@
 <script setup lang="ts">
-const model = defineModel<string>();
+const model = defineModel<string>()
 
-type VariantType = "primary" | "ghost";
+type VariantType = 'primary' | 'ghost'
 
 interface Props {
-  variant?: VariantType;
-  ariaLabel: string;
-  placeholder: string;
-  type?: "text" | "number";
-  disabled?: boolean;
+  variant?: VariantType
+  ariaLabel: string
+  placeholder: string
+  type?: 'text' | 'number'
+  disabled?: boolean
 }
 
 const {
-  variant = "primary",
+  variant = 'primary',
   ariaLabel,
   placeholder,
-  type = "text",
+  type = 'text',
   disabled = false,
-} = defineProps<Props>();
+} = defineProps<Props>()
 
 const variantClass: Record<VariantType, string> = {
-  primary: "w-full border-2 border-(--primary-color) bg-white text-black focus:outline-none focus:ring-2 focus:ring-(--primary-color)",
-  ghost: "w-full border border-gray-300 bg-transparent text-black focus:outline-none focus:border-(--primary-color)",
-};
+  primary:
+    'w-full border-2 border-(--primary-color) bg-white text-black focus:outline-none focus:ring-2 focus:ring-(--primary-color)',
+  ghost:
+    'w-full border border-gray-300 bg-transparent text-black focus:outline-none focus:border-(--primary-color)',
+}
 </script>
 
 <template>

@@ -27,6 +27,7 @@ describe('the ShowMetadata component', () => {
     })
 
     const summary = wrapper.getComponent(Text)
+
     expect(summary.html()).toContain('<strong>Safe</strong>')
     expect(summary.html()).not.toContain('<img')
     expect(summary.html()).not.toContain('<script')

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import useShowDetails from '@/features/showDetails/composables/useShowDetails'
-import ShowHero from '@/features/showDetails/components/ShowHero/ShowHero.vue'
-import ShowGenres from '@/features/showDetails/components/ShowGenres/ShowGenres.vue'
-import ShowMetadata from '@/features/showDetails/components/ShowMetadata/ShowMetadata.vue'
 import { computed } from 'vue'
+import ShowDetails from '@/features/showDetails/components/ShowDetails/ShowDetails.vue'
 
 const route = useRoute()
 const id = computed(() => Number(route.params.id))
@@ -17,9 +15,5 @@ const { item: show, isLoading, error } = useShowDetails({ id })
     <span class="text-(--white-text)">Loading...</span>
   </div>
 
-  <div v-else-if="show">
-    <ShowHero :show="show" />
-    <ShowGenres :genres="show.genres" />
-    <ShowMetadata :show="show" />
-  </div>
+  <ShowDetails v-else-if="show" :show="show" />
 </template>

@@ -10,7 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div v-if="genres.length" class="flex items-center justify-center gap-3">
+  <div v-if="genres.length" class="flex items-center justify-center gap-3 mt-6">
     <Chip v-for="genre in genres" :key="genre" variant="outlined">
       {{ genre }}
     </Chip>

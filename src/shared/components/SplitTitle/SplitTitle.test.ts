@@ -12,12 +12,12 @@ describe('SplitTitle', () => {
     expect(wrapper.find('span').text()).toBe('World')
   })
 
-  it('splits single word at midpoint', () => {
+  it('return single word if just one', () => {
     const wrapper = mount(SplitTitle, {
       props: { title: 'Mazeflix' },
     })
 
-    expect(wrapper.text()).toContain('Maze')
-    expect(wrapper.find('span').text()).toBe('flix')
+    expect(wrapper.text()).toContain('Mazeflix')
+    expect(wrapper.find('h1').text()).toBe('Mazeflix')
   })
 })
