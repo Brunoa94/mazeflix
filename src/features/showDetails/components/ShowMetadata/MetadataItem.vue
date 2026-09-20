@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Text from '@/shared/components/Text.vue'
+import Text from '@/shared/components/Text/Text.vue'
 
 interface Props {
   label: string

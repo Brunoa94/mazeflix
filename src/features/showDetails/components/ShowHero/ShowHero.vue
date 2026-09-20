@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Overlay from '@/shared/components/Overlay.vue'
-import SplitTitle from '@/shared/components/SplitTitle.vue'
+import SplitTitle from '@/shared/components/SplitTitle/SplitTitle.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
-import placeholderImage from '@/assets/placeholder-show.svg'
 import { computed } from 'vue'
 import ShowHeroDetails from './ShowHeroDetails.vue'
 
@@ -12,7 +11,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const backgroundImage = computed(() => props.show.image?.original ?? placeholderImage)
+const backgroundImage = computed(() => props.show.image?.original)
 </script>
 
 <template>

@@ -1,0 +1,25 @@
+import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
+
+export const createMockShow = (id: number, name: string): TvMazeShowI => ({
+  id,
+  url: 'https://example.com',
+  name,
+  type: 'Scripted',
+  language: 'English',
+  genres: ['Drama', 'Crime'],
+  network: { id: 1, name: 'AMC', officialSite: null },
+  status: 'Running',
+  runtime: 60,
+  averageRuntime: 60,
+  premiered: '2020-01-01',
+  ended: null,
+  officialSite: null,
+  schedule: { time: '20:00', days: ['Monday'] },
+  rating: { average: 8.0 },
+  weight: 100,
+  externals: { tvrage: null, thetvdb: null, imdb: null },
+  image: { medium: 'https://example.com/medium.jpg', original: 'https://example.com/original.jpg' },
+  summary: 'Test summary for the mock data',
+  updated: 1234567890,
+  webChannel: { id: 1, name: 'Netflix', officialSite: null },
+})

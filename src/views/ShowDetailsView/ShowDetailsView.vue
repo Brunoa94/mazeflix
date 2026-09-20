@@ -2,13 +2,14 @@
 import { useRoute } from 'vue-router'
 import useShowDetails from '@/features/showDetails/composables/useShowDetails'
 import ShowHero from '@/features/showDetails/components/ShowHero/ShowHero.vue'
-import ShowGenres from '@/features/showDetails/components/ShowGenres.vue'
+import ShowGenres from '@/features/showDetails/components/ShowGenres/ShowGenres.vue'
 import ShowMetadata from '@/features/showDetails/components/ShowMetadata/ShowMetadata.vue'
+import { computed } from 'vue'
 
 const route = useRoute()
-const id = Number(route.params.id)
+const id = computed(() => Number(route.params.id))
 
-const { item: show, isLoading } = useShowDetails({ id })
+const { item: show, isLoading, error } = useShowDetails({ id })
 </script>
 
 <template>

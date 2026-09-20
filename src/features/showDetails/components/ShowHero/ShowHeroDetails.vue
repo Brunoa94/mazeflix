@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Chip from '@/shared/components/Chip.vue'
-import Text from '@/shared/components/Text.vue'
+import Chip from '@/shared/components/Chip/Chip.vue'
+import Text from '@/shared/components/Text/Text.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import { computed } from 'vue'
 

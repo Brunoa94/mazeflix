@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { TvMazeGenreType } from '@/shared/types/tvMaze/tvMazeGenre'
-import Chip from '@/shared/components/Chip.vue'
+import Chip from '@/shared/components/Chip/Chip.vue'
 
 interface Props {
   genres: TvMazeGenreType[]

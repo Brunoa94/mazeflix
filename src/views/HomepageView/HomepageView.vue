@@ -2,7 +2,7 @@
 import ShowCatalogue from '@/features/showCatalogue/components/ShowCatalogue.vue'
 import useShowCatalogue from '@/features/showCatalogue/composables/useShowCatalogue'
 
-const { isLoading, item: catalogue, error } = useShowCatalogue()
+const { isLoading, item: catalogue, error } = useShowCatalogue({ page: 1 })
 </script>
 
 <template>

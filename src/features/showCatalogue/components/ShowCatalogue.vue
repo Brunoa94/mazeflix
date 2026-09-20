@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import Heading from '@/shared/components/Heading.vue'
-import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
-import ShowList from './ShowList.vue'
+import Heading from '@/shared/components/Heading/Heading.vue'
+import ShowList from './ShowList/ShowList.vue'
 import type { CatalogueType } from '../types/catalogue.ts'
 
 interface Props {

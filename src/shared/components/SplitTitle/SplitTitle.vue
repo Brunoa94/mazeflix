@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Heading from './Heading.vue'
-import { splitTitle } from '../helpers/splitTitle.ts'
+import { splitTitle } from '@/shared/helpers/splitTitle'
+import Heading from '../Heading/Heading.vue'
 
 type ColorType = 'primary' | 'secondary'
 

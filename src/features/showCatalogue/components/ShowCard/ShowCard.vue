@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import Text from '@/shared/components/Text.vue'
-import Chip from '@/shared/components/Chip.vue'
-import Heading from '@/shared/components/Heading.vue'
+import Text from '@/shared/components/Text/Text.vue'
+import Chip from '@/shared/components/Chip/Chip.vue'
+import Heading from '@/shared/components/Heading/Heading.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import Overlay from '@/shared/components/Overlay.vue'
-import { computed } from 'vue'
 
 type VariantType = 'vertical' | 'horizontal'
 
