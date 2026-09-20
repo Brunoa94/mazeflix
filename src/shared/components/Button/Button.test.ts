@@ -3,21 +3,16 @@ import { mount } from '@vue/test-utils'
 import Button from './Button.vue'
 
 describe('Button', () => {
-  it('renders slot content', () => {
-    const wrapper = mount(Button, {
-      props: { ariaLabel: 'Submit' },
-      slots: { default: 'Click me' },
-    })
+  const wrapper = mount(Button, {
+    props: { ariaLabel: 'Submit form' },
+    slots: { default: 'Submit' },
+  })
 
-    expect(wrapper.text()).toBe('Click me')
+  it('renders slot content', () => {
+    expect(wrapper.text()).toBe('Submit')
   })
 
   it('sets aria-label', () => {
-    const wrapper = mount(Button, {
-      props: { ariaLabel: 'Submit form' },
-      slots: { default: 'Submit' },
-    })
-
     expect(wrapper.attributes('aria-label')).toBe('Submit form')
   })
 

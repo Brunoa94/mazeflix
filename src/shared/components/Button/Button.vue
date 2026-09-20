@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type VariantType = 'primary' | 'secondary' | 'default'
+type VariantType = 'search'
 
 interface Props {
   variant?: VariantType
@@ -8,25 +8,28 @@ interface Props {
   disabled?: boolean
 }
 
-const { variant = 'default', ariaLabel, type = 'button', disabled = false } = defineProps<Props>()
+const { variant = 'search', ariaLabel, type = 'button', disabled = false } = defineProps<Props>()
+const emit = defineEmits<{
+  click: []
+}>()
 
 const variantClass: Record<VariantType, string> = {
-  primary: 'bg-(--primary-color) text-white border-lg hover:opacity-80',
-  secondary: 'bg-(--secondary-color) text-black hover:opacity-80',
-  default: 'bg-gray-200 text-black hover:bg-gray-300',
+  search:
+    'px-8 py-2 bg-transparent text-(--white-text) border border-(--color-dark-gray-primary) rounded-md hover:border-(--color-gray-primary)',
 }
 </script>
 
 <template>
   <button
     :class="[
-      'px-8 py-2 rounded cursor-pointer',
+      'px-8 py-2 cursor-pointer',
       variantClass[variant],
       disabled && 'opacity-50 cursor-not-allowed',
     ]"
     :aria-label="ariaLabel"
     :type="type"
     :disabled="disabled"
+    @click="emit('click')"
   >
     <slot />
   </button>
