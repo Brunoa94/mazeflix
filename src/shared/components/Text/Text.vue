@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type AsType = 'p' | 'span'
+type AsType = 'p' | 'span' | 'li'
 type VariantType = 'body' | 'banner' | 'results'
 type ColorsVariants = 'default' | 'warning' | 'success' | 'ghost'
 

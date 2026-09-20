@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import ShowCard from './ShowCard.vue'
-import { createMockShow } from '../../../../shared/mock/createMockShow.ts'
+import { createMockShow } from '@/shared/mock/createMockShow.ts'
 
 describe('the ShowCard component', () => {
   const mockTvMazeShow = createMockShow(1, 'Breaking Bad')

@@ -11,7 +11,7 @@ interface Props {
 const { variant = 'play', ariaLabel, to, isExternal = false } = defineProps<Props>()
 
 const variantClass: Record<VariantType, string> = {
-  play: 'flex items-center bg-(--color-white) text-(--color-black-primary) font-bold rounded-lg hover:opacity-80 px-12 py-4 cursor-pointer justify-center w-fit',
+  play: 'flex items-center bg-(--color-white) text-(--color-black-primary) font-bold rounded-lg hover:opacity-80 px-12 py-4 cursor-pointer justify-center w-fit focus:outline-2 focus:outline-offset-2 focus:outline-white',
 }
 </script>
 

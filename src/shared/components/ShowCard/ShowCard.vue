@@ -23,6 +23,7 @@ const variantClass: Record<VariantType, string> = {
 <template>
   <RouterLink
     :to="{ name: 'showDetails', params: { id: item.id } }"
+    :aria-label="`View details for ${item.name}`"
     :class="[
       'flex items-start relative rounded-xl overflow-hidden',
       'hover:scale-110 transition-all duration-300 bg-cover bg-center bg-no-repeat',
@@ -32,8 +33,8 @@ const variantClass: Record<VariantType, string> = {
   >
     <Overlay>
       <div class="h-full w-full flex flex-col justify-end gap-2 p-4 rounded-xl">
-        <Chip variant="rating">
-          <Text as="span" variant="banner">{{ item.rating.average }}</Text>
+        <Chip variant="rating" class="min-h-12">
+          <Text as="span" variant="banner">{{ item.rating.average ?? '-' }}</Text>
         </Chip>
         <Heading as="h3"> {{ item.name }} </Heading>
       </div>

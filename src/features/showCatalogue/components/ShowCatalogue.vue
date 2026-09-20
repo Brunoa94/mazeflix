@@ -2,6 +2,7 @@
 import Heading from '@/shared/components/Heading/Heading.vue'
 import ShowList from '@/shared/components/ShowList/ShowList.vue'
 import type { CatalogueType } from '../types/catalogue'
+import ShowListShimmer from '@/shared/components/ShowList/ShowListShimmer.vue'
 
 interface Props {
   catalogue: CatalogueType
@@ -12,8 +13,6 @@ const { catalogue } = defineProps<Props>()
 
 <template>
   <section
-    :items="shows"
-    :title="genre"
     v-for="[genre, shows] in catalogue"
     :key="genre"
     class="flex flex-col gap-2 my-4"

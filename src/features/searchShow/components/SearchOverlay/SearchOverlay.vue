@@ -33,6 +33,9 @@ const noResults = computed(
   <Teleport v-if="searchStore.isSearchOpen" to="body">
     <Transition name="overlay">
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search shows"
         class="fixed inset-x-0 bottom-0 top-14 z-10 bg-black pt-12 p-horizontal-container-full flex flex-col gap-3 overflow-y-auto"
       >
         <div class="flex items-center w-full">
@@ -46,12 +49,13 @@ const noResults = computed(
           </Button>
         </div>
 
-        <Text v-if="isLoadingState && hasQuery" as="span" variant="results">Searching...</Text>
+        <div aria-live="polite" aria-atomic="true">
+          <Text v-if="isLoadingState && hasQuery" as="span" variant="results">Searching...</Text>
+          <Text v-else-if="noResults" as="span" variant="results">No results found</Text>
+          <Text v-else-if="hasResults" as="span" variant="results">{{ items?.length }} results found</Text>
+        </div>
 
-        <Text v-else-if="noResults" as="span" variant="results">No results found</Text>
-
-        <div v-else-if="hasResults" class="flex flex-col gap-4">
-          <Text as="span" variant="results">{{ items?.length }} results found</Text>
+        <div v-if="hasResults" class="flex flex-col gap-4">
           <ShowList variant="grid" :items="items ?? []" />
         </div>
       </div>

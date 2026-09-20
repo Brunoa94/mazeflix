@@ -13,8 +13,10 @@ const { schedule } = defineProps<Props>()
 <template>
   <div class="flex flex-col items-center gap-2">
     <Heading as="h3" variant="details-title">Schedule</Heading>
-    <Text v-for="day in schedule.days" as="p" variant="body" class="text-white"
-      >{{ day }} at {{ schedule.time }}</Text
-    >
+    <ul class="list-none flex flex-col items-center">
+      <Text v-for="day in schedule.days" :key="day" as="li" variant="body" class="text-white">
+        {{ day }} at {{ schedule.time }}
+      </Text>
+    </ul>
   </div>
 </template>

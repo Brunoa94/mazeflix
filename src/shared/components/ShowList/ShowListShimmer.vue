@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
-import ShowCard from '@/shared/components/ShowCard/ShowCard.vue'
+import { computed } from 'vue'
+import ShowCardShimmer from '@/shared/components/ShowCard/ShowCardShimmer.vue'
 
 type VariantType = 'horizontal' | 'grid'
 
 interface Props {
-  items: TvMazeShowI[]
   variant?: VariantType
 }
 
-const { items, variant = 'horizontal' } = defineProps<Props>()
+const { variant = 'horizontal' } = defineProps<Props>()
 
 const variantClass: Record<VariantType, { ul: string; li: string }> = {
   horizontal: {
@@ -21,12 +20,14 @@ const variantClass: Record<VariantType, { ul: string; li: string }> = {
     li: 'flex items-center',
   },
 }
+
+const numberOfElements = computed(() => (variant === 'grid' ? 20 : 10))
 </script>
 
 <template>
   <ul :class="variantClass[variant].ul">
-    <li v-for="item in items" :key="item.id" :class="variantClass[variant].li">
-      <ShowCard :item="item" />
+    <li v-for="i in numberOfElements" :key="i" :class="variantClass[variant].li">
+      <ShowCardShimmer />
     </li>
   </ul>
 </template>

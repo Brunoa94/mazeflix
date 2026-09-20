@@ -1,11 +1,13 @@
 <script setup lang="ts">
 type VariantType = 'language' | 'genre' | 'rating' | 'logo' | 'outlined'
+type AsType = 'span' | 'li'
 
 interface Props {
   variant?: VariantType
+  as?: AsType
 }
 
-const { variant = 'language' } = defineProps<Props>()
+const { variant = 'language', as = 'span' } = defineProps<Props>()
 
 const variantClass: Record<VariantType, string> = {
   language: 'px-3 py-1 rounded text-sm bg-bg-chip',
@@ -17,7 +19,11 @@ const variantClass: Record<VariantType, string> = {
 </script>
 
 <template>
-  <span class="flex items-center justify-center text-(--white-text)" :class="variantClass[variant]">
+  <component
+    :is="as"
+    class="flex items-center justify-center text-(--white-text)"
+    :class="variantClass[variant]"
+  >
     <slot />
-  </span>
+  </component>
 </template>

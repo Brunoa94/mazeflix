@@ -13,10 +13,10 @@ defineProps<Props>()
 <template>
   <div v-if="genres.length" class="flex flex-col items-center gap-3">
     <Heading as="h3" variant="details-title">Genres</Heading>
-    <div class="flex items-center justify-center gap-3">
-      <Chip v-for="genre in genres" :key="genre" variant="outlined">
+    <ul class="flex items-center justify-center gap-3 list-none">
+      <Chip v-for="genre in genres" :key="genre" as="li" variant="outlined">
         {{ genre }}
       </Chip>
-    </div>
+    </ul>
   </div>
 </template>
