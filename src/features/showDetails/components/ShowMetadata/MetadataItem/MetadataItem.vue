@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Text from '@/shared/components/Text/Text.vue'
+import Heading from '@/shared/components/Heading/Heading.vue'
 
 interface Props {
   label: string
@@ -11,7 +12,7 @@ defineProps<Props>()
 
 <template>
   <div class="flex flex-col items-center gap-2">
-    <Text as="span" color="ghost">{{ label }}</Text>
+    <Heading as="h3" variant="details-title">{{ label }}</Heading>
     <Text as="p" variant="body">{{ value }}</Text>
   </div>
 </template>

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ShowMetadata from './ShowMetadata.vue'
-import MetadataItem from './MetadataItem.vue'
+import MetadataItem from './MetadataItem/MetadataItem.vue'
 import Text from '@/shared/components/Text/Text.vue'
 import { createMockShow } from '@/shared/mock/createMockShow'
 

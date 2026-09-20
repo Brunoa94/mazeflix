@@ -13,7 +13,7 @@ describe('the ScheduleItem component', () => {
       },
     })
 
-    expect(wrapper.get('span').text()).toBe('Schedule')
+    expect(wrapper.get('h3').text()).toBe('Schedule')
     expect(wrapper.get('p').text()).toBe('Sundays at 21:00')
   })
 
@@ -29,7 +29,7 @@ describe('the ScheduleItem component', () => {
 
     const paragraphs = wrapper.findAll('p')
     expect(paragraphs).toHaveLength(2)
-    expect(paragraphs[0].text()).toBe('Monday at 20:00')
-    expect(paragraphs[1].text()).toBe('Wednesday at 20:00')
+    expect(paragraphs.at(0)?.text()).toBe('Monday at 20:00')
+    expect(paragraphs.at(1)?.text()).toBe('Wednesday at 20:00')
   })
 })
