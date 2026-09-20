@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type VariantType = 'search'
+type VariantType = 'search' | 'ghost'
 
 interface Props {
   variant?: VariantType
@@ -16,6 +16,7 @@ const emit = defineEmits<{
 const variantClass: Record<VariantType, string> = {
   search:
     'px-8 py-2 bg-transparent text-(--white-text) border border-(--color-dark-gray-primary) rounded-md hover:border-(--color-gray-primary)',
+  ghost: 'bg-transparent hover:opacity-80',
 }
 </script>
 

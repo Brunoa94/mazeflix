@@ -55,5 +55,20 @@ describe('the SearchOverlay component', () => {
     expect(input?.getAttribute('aria-label')).toBe('Write your search')
   })
 
+  it('closes the overlay when close button is clicked', async () => {
+    const searchStore = useSearchStore()
+
+    searchStore.openSearch()
+    await wrapper.vm.$nextTick()
+
+    const closeButton = document.body.querySelector('button[aria-label="Close search"]')
+    expect(closeButton).not.toBeNull()
+
+    closeButton?.dispatchEvent(new Event('click'))
+    await wrapper.vm.$nextTick()
+
+    expect(searchStore.isSearchOpen).toBe(false)
+  })
+
   wrapper.unmount()
 })

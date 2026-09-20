@@ -1,6 +1,6 @@
 <script setup lang="ts">
 type AsType = 'p' | 'span'
-type VariantType = 'body' | 'banner'
+type VariantType = 'body' | 'banner' | 'results'
 type ColorsVariants = 'default' | 'warning' | 'success' | 'ghost'
 
 interface Props {
@@ -13,6 +13,7 @@ const { as = 'p', variant, color = 'default' } = defineProps<Props>()
 const variantClass: Record<VariantType, string> = {
   body: 'text-lg font-normal',
   banner: 'text-md font-normal',
+  results: 'text-3xl opacity-80',
 }
 
 const colorClass: Record<ColorsVariants, string> = {

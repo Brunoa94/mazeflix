@@ -28,7 +28,7 @@ const variantClass: Record<VariantType, string> = {
       'hover:scale-110 transition-all duration-300 bg-cover bg-center bg-no-repeat',
       variantClass[variant],
     ]"
-    :style="{ backgroundImage: `url(${item.image.medium})` }"
+    :style="{ backgroundImage: item.image ? `url(${item.image.medium})` : undefined }"
   >
     <Overlay>
       <div class="h-full w-full flex flex-col justify-end gap-2 p-4 rounded-xl">

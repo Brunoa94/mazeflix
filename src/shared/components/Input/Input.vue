@@ -21,7 +21,7 @@ const {
 
 const variantClass: Record<VariantType, string> = {
   search:
-    'h-12 w-full text-4xl border-none focus:outline-none focus:border-none focus:ring-0 placeholder:text-4xl placeholder:text-(--color-dark-gray-primary)',
+    'h-12 w-full text-4xl border-none focus:outline-none focus:border-none focus:ring-0 placeholder:text-4xl placeholder:text-white text-white',
 }
 </script>
 

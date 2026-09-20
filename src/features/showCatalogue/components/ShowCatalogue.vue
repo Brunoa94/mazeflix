@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Heading from '@/shared/components/Heading/Heading.vue'
-import ShowList from './ShowList/ShowList.vue'
-import type { CatalogueType } from '../types/catalogue.ts'
+import ShowList from '@/shared/components/ShowList/ShowList.vue'
+import type { CatalogueType } from '../types/catalogue'
 
 interface Props {
   catalogue: CatalogueType

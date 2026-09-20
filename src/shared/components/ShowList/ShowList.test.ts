@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import ShowList from './ShowList.vue'
-import { createMockShow } from '../../../../shared/mock/createMockShow.ts'
+import { createMockShow } from '@/shared/mock/createMockShow.ts'
 
 describe('the ShowList component', () => {
   it('shows the correct number of elements', () => {
@@ -28,5 +28,27 @@ describe('the ShowList component', () => {
 
     expect(wrapper.findAll('li')).toHaveLength(0)
     expect(wrapper.findAll('a')).toHaveLength(0)
+  })
+
+  it('renders horizontal variant by default', () => {
+    const shows = [createMockShow(1, 'Breaking Bad'), createMockShow(2, 'Prison Break')]
+
+    const wrapper = mount(ShowList, {
+      props: { items: shows },
+    })
+
+    expect(wrapper.find('ul').classes()).toContain('flex')
+    expect(wrapper.findAll('li')).toHaveLength(2)
+  })
+
+  it('renders grid variant when specified', () => {
+    const shows = [createMockShow(1, 'Breaking Bad'), createMockShow(2, 'Prison Break')]
+
+    const wrapper = mount(ShowList, {
+      props: { items: shows, variant: 'grid' },
+    })
+
+    expect(wrapper.find('ul').classes()).toContain('grid')
+    expect(wrapper.findAll('li')).toHaveLength(2)
   })
 })

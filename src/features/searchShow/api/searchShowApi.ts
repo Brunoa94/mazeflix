@@ -5,15 +5,17 @@ import { toValue, type MaybeRefOrGetter } from 'vue'
 
 export async function searchShowApi({
   query,
+  signal,
 }: {
   query: MaybeRefOrGetter<string>
+  signal?: AbortSignal
 }): Promise<TvMazeShowI[]> {
   const urlParams = new URLSearchParams()
   urlParams.append('q', toValue(query))
 
   const PATH = `/search/shows?${urlParams.toString()}`
 
-  const response = await tvMazeClient.get<SearchResultI[]>(PATH)
+  const response = await tvMazeClient.get<SearchResultI[]>(PATH, { signal })
 
   return response.map((result) => result.show)
 }
