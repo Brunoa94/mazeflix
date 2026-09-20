@@ -1,10 +1,15 @@
 import { tvMazeClient } from '@/shared/api/tvMazeClient'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import type { SearchResultI } from '../types/searchResult'
+import { toValue, type MaybeRefOrGetter } from 'vue'
 
-export async function searchShowApi({ query }: { query: string }): Promise<TvMazeShowI[]> {
+export async function searchShowApi({
+  query,
+}: {
+  query: MaybeRefOrGetter<string>
+}): Promise<TvMazeShowI[]> {
   const urlParams = new URLSearchParams()
-  urlParams.append('q', query)
+  urlParams.append('q', toValue(query))
 
   const PATH = `/search/shows?${urlParams.toString()}`
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchTrigger from '@/features/searchShow/components/SearchTrigger.vue'
+import SearchTrigger from '@/features/searchShow/components/SearchTrigger/SearchTrigger.vue'
 import Chip from '@/shared/components/Chip/Chip.vue'
 import Text from '@/shared/components/Text/Text.vue'
 </script>
