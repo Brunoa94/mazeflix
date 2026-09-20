@@ -1,25 +1,19 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount } from '@vue/test-utils'
-import { createPinia, setActivePinia } from 'pinia'
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
+import { mount, VueWrapper } from '@vue/test-utils'
 import SearchOverlay from './SearchOverlay.vue'
 import { useSearchStore } from '@/stores/searchStore'
 
-vi.mock('../composables/useSearchShow', () => ({
-  default: () => ({
-    items: { value: [] },
-    isLoading: { value: false },
-    isPending: { value: false },
-    error: { value: null },
-  }),
-}))
-
 describe('the SearchOverlay component', () => {
+  let wrapper: VueWrapper
+
   beforeEach(() => {
-    setActivePinia(createPinia())
+    wrapper = mount(SearchOverlay, {
+      attachTo: document.body,
+    })
   })
 
-  const wrapper = mount(SearchOverlay, {
-    attachTo: document.body,
+  afterEach(() => {
+    wrapper.unmount()
   })
 
   it('dont show the overlay when closed', () => {
@@ -69,6 +63,4 @@ describe('the SearchOverlay component', () => {
 
     expect(searchStore.isSearchOpen).toBe(false)
   })
-
-  wrapper.unmount()
 })
