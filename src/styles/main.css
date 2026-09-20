@@ -31,6 +31,9 @@
   /** Backgrounds */
   --color-bg-chip: #ffffff33;
   --color-bg-chip-genre: #ffffff1a;
+
+  /** Borders */
+  --color-border-subtle: #ffffff4d;
 }
 
 .overflow-scroll,

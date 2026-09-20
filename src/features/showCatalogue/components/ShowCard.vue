@@ -4,7 +4,6 @@ import Chip from '@/shared/components/Chip.vue'
 import Heading from '@/shared/components/Heading.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import Overlay from '@/shared/components/Overlay.vue'
-import placeholderImage from '@/assets/placeholder-show.svg'
 import { computed } from 'vue'
 
 type VariantType = 'vertical' | 'horizontal'
@@ -20,8 +19,6 @@ const variantClass: Record<VariantType, string> = {
   vertical: 'h-[300px] w-[220px] bg-black',
   horizontal: '',
 }
-
-const backgroundImage = computed(() => item.image?.medium ?? placeholderImage)
 </script>
 
 <template>
@@ -32,7 +29,7 @@ const backgroundImage = computed(() => item.image?.medium ?? placeholderImage)
       'hover:scale-110 transition-all duration-300 bg-cover bg-center bg-no-repeat',
       variantClass[variant],
     ]"
-    :style="{ backgroundImage: `url(${backgroundImage})` }"
+    :style="{ backgroundImage: `url(${item.image.medium})` }"
   >
     <Overlay>
       <div class="h-full w-full flex flex-col justify-end gap-2 p-4 rounded-xl">
