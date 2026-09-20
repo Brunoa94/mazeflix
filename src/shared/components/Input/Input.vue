@@ -20,7 +20,8 @@ const {
 } = defineProps<Props>()
 
 const variantClass: Record<VariantType, string> = {
-  search: 'w-full border-none focus:outline-none focus:ring-2 focus:ring-(--colo-red-primary)',
+  search:
+    'h-12 w-full text-4xl border-none focus:outline-none focus:border-none focus:ring-0 placeholder:text-4xl placeholder:text-(--color-dark-gray-primary)',
 }
 </script>
 

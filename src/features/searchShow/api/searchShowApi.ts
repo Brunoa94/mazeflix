@@ -1,10 +1,6 @@
 import { tvMazeClient } from '@/shared/api/tvMazeClient'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
-
-interface SearchResultI {
-  score: number
-  show: TvMazeShowI
-}
+import type { SearchResultI } from '../types/searchResult'
 
 export async function searchShowApi({ query }: { query: string }): Promise<TvMazeShowI[]> {
   const urlParams = new URLSearchParams()

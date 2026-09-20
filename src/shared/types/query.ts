@@ -7,4 +7,6 @@ export type UseQueryType<T> = {
   error: ShallowRef<Error | null>
 }
 
-export type UseQueryTypeArray<T> = Omit<UseQueryType<T>, 'item'> & { items: T[] }
+export type UseQueryTypeArray<T> = Omit<UseQueryType<T>, 'item'> & {
+  items: ShallowRef<T[] | undefined>
+}
