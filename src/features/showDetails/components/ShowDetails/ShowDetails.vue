@@ -14,7 +14,7 @@ const { show } = defineProps<Props>()
 </script>
 
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center pb-16">
     <ShowHero :show="show" />
     <ShowGenres :genres="show.genres" />
     <ShowMetadata :show="show" />

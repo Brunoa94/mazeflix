@@ -12,7 +12,7 @@ interface TvMazeWebChannelI {
   officialSite: string | null
 }
 
-interface TvMazeScheduleI {
+export interface TvMazeScheduleI {
   time: string
   days: string[]
 }

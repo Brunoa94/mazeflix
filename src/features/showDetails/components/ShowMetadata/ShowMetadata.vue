@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Text from '@/shared/components/Text/Text.vue'
-import MetadataItem from './MetadataItem.vue'
+import MetadataItem from './MetadataItem/MetadataItem.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import { computed } from 'vue'
 import { sanitizeHtml } from '@/shared/helpers/sanitizeHtml'
+import ScheduleItem from './ScheduleItem/ScheduleItem.vue'
 
 interface Props {
   show: TvMazeShowI
@@ -24,8 +25,14 @@ const sanitizedSummary = computed(() => sanitizeHtml(props.show.summary))
       variant="body"
     />
 
-    <MetadataItem v-if="show.network?.name" label="NETWORK" :value="show.network.name" />
-
-    <MetadataItem v-if="show.webChannel?.name" label="WEB CHANNEL" :value="show.webChannel.name" />
+    <div class="flex flex-col gap-6 border-y-3 border-dark-gray-primary py-4">
+      <MetadataItem v-if="show.network?.name" label="NETWORK" :value="show.network.name" />
+      <MetadataItem
+        v-if="show.webChannel?.name"
+        label="WEB CHANNEL"
+        :value="show.webChannel.name"
+      />
+      <ScheduleItem :schedule="show.schedule" />
+    </div>
   </div>
 </template>
