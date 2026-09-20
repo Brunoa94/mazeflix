@@ -1,8 +1,9 @@
 import { describe, it, expect, vi } from 'vitest'
-import { mount, RouterLinkStub } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { ref } from 'vue'
 import HomepageView from './HomepageView.vue'
 import ShowCatalogue from '@/features/showCatalogue/components/ShowCatalogue.vue'
+import ShowCatalogueShimmer from '@/features/showCatalogue/components/ShowCatalogueShimmer.vue'
 import { createMockShow } from '@/shared/mock/createMockShow'
 import type { CatalogueType } from '@/features/showCatalogue/types/catalogue'
 
@@ -23,7 +24,7 @@ describe('HomepageView', () => {
 
     const wrapper = mount(HomepageView)
 
-    expect(wrapper.text()).toContain('Is Loading')
+    expect(wrapper.findComponent(ShowCatalogueShimmer).exists()).toBe(true)
   })
 
   it('shows error state', () => {
