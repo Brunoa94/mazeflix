@@ -1,15 +1,10 @@
-export function splitTitle(text: string): { firstPart: string; lastPart: string } {
+export function splitTitle(text: string): { firstPart: string; lastPart: string | null } {
   const words = text.split(' ')
 
-  if (words.length === 1) {
-    const midpoint = Math.ceil(text.length / 2)
-    return {
-      firstPart: text.slice(0, midpoint),
-      lastPart: text.slice(midpoint),
-    }
-  }
+  if (words.length === 1) return { firstPart: words.join(''), lastPart: null }
 
   const lastPart = words.pop() ?? ''
+
   return {
     firstPart: words.join(' '),
     lastPart,

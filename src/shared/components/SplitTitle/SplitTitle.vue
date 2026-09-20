@@ -21,6 +21,6 @@ const colorClass: Record<ColorType, string> = {
 
 <template>
   <Heading as="h1" variant="title">
-    {{ firstPart }} <span :class="colorClass[accentColor]">{{ lastPart }}</span>
+    {{ firstPart }} <span v-if="lastPart" :class="colorClass[accentColor]">{{ lastPart }}</span>
   </Heading>
 </template>
