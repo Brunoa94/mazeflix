@@ -6,10 +6,17 @@ import AppError from '@/shared/components/AppError/AppError.vue'
 import ShowListShimmer from '@/shared/components/ShowList/ShowListShimmer.vue'
 import SearchInput from './SearchInput.vue'
 import useSearchShow from '../../composables/useSearchShow'
+import { useRouter } from 'vue-router'
+import { watch } from 'vue'
 
 const searchStore = useSearchStore()
+const router = useRouter()
 
 const { query, items, isSuspense, hasQuery, hasResults, isEmpty, error, refetch } = useSearchShow()
+
+watch(() => router.currentRoute.value.path, () => {
+  searchStore.closeSearch()
+})
 </script>
 
 <template>
