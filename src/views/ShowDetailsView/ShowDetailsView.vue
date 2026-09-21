@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 import useShowDetails from '@/features/showDetails/composables/useShowDetails'
 import { computed } from 'vue'
 import ShowDetails from '@/features/showDetails/components/ShowDetails/ShowDetails.vue'
+import AppError from '@/shared/components/AppError/AppError.vue'
 
 const route = useRoute()
 const id = computed(() => Number(route.params.id))
@@ -19,6 +20,8 @@ const { item: show, isLoading, error } = useShowDetails({ id })
   >
     <span class="text-(--white-text)">Loading...</span>
   </div>
+
+  <AppError v-else-if="error" :error="error" />
 
   <ShowDetails v-else-if="show" :show="show" />
 </template>

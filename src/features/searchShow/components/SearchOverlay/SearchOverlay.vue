@@ -9,6 +9,7 @@ import ShowList from '@/shared/components/ShowList/ShowList.vue'
 import Text from '@/shared/components/Text/Text.vue'
 import { searchShowQuery } from '../../queries/searchShowQuery'
 import { useQuery } from '@pinia/colada'
+import AppError from '@/shared/components/AppError/AppError.vue'
 
 const searchStore = useSearchStore()
 const query = ref<string>('')
@@ -56,6 +57,7 @@ const noResults = computed(
 
         <div aria-live="polite" aria-atomic="true">
           <Text v-if="isLoadingState && hasQuery" as="span" variant="results">Searching...</Text>
+          <AppError v-else-if="error" :error="error" />
           <Text v-else-if="noResults" as="span" variant="results">No results found</Text>
           <Text v-else-if="hasResults" as="span" variant="results"
             >{{ items?.length }} results found</Text
