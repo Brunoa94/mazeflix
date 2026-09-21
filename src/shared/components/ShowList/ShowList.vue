@@ -17,7 +17,7 @@ const variantClass: Record<VariantType, { ul: string; li: string }> = {
     li: 'flex items-center first:ml-left-horizontal-container-full',
   },
   grid: {
-    ul: 'grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full',
+    ul: 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full',
     li: 'flex items-center',
   },
 }
