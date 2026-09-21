@@ -1,11 +1,11 @@
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import type { CatalogueType } from '../types/catalogue'
 
-export function mapTvMazeShowToCatalogue({
-  tvMazeShows,
-}: {
+interface Props {
   tvMazeShows: TvMazeShowI[]
-}): CatalogueType {
+}
+
+export function mapTvMazeShowToCatalogue({ tvMazeShows }: Props): CatalogueType {
   const genresMap = new Map<string, TvMazeShowI[]>()
 
   tvMazeShows.forEach((show: TvMazeShowI) => {

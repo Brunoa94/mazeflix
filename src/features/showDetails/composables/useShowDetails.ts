@@ -4,11 +4,11 @@ import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import type { UseQueryType } from '@/shared/types/query'
 import { computed, toValue, type MaybeRefOrGetter } from 'vue'
 
-export default function useShowDetails({
-  id,
-}: {
+interface Props {
   id: MaybeRefOrGetter<number>
-}): UseQueryType<TvMazeShowI | undefined> {
+}
+
+export default function useShowDetails({ id }: Props): UseQueryType<TvMazeShowI | undefined> {
   const { data, isLoading, isPending, error, refetch } = useQuery(() =>
     showDetailsQuery({ id: toValue(id) }),
   )

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Chip from './Chip.vue'
 
-describe('Chip', () => {
+describe('the Chip component', () => {
   const wrapper = mount(Chip, {
     slots: { default: 'Drama' },
   })

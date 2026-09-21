@@ -1,6 +1,11 @@
 import { ApiError, type EndpointsType } from '../types/error'
 
-export function throwApiError(e: unknown, endpoint: EndpointsType): never {
+interface Props {
+  e: unknown
+  endpoint: EndpointsType
+}
+
+export function throwApiError({ e, endpoint }: Props): never {
   if (e instanceof ApiError) {
     throw new ApiError(e.status, e.message, endpoint)
   }

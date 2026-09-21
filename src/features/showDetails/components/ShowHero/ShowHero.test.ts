@@ -20,7 +20,7 @@ describe('the ShowHero component', () => {
       props: { show },
     })
 
-    expect(wrapper.element.style.backgroundImage).toBe('url("https://example.com/original.jpg")')
+    expect(wrapper.get('img').attributes('src')).toBe('https://example.com/original.jpg')
   })
 
   it('shows the show details', () => {

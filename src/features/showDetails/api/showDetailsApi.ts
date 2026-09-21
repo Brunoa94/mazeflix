@@ -2,7 +2,11 @@ import { tvMazeClient } from '@/shared/api/tvMazeClient'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import { throwApiError } from '@/shared/helpers/throwApiError'
 
-export async function showDetailsApi({ id }: { id: number }): Promise<TvMazeShowI> {
+interface Props {
+  id: number
+}
+
+export async function showDetailsApi({ id }: Props): Promise<TvMazeShowI> {
   try {
     const PATH = `/shows/${id}`
 
@@ -10,6 +14,6 @@ export async function showDetailsApi({ id }: { id: number }): Promise<TvMazeShow
 
     return response
   } catch (e) {
-    throwApiError(e, 'SHOW_DETAILS')
+    throwApiError({ e, endpoint: 'SHOW_DETAILS' })
   }
 }

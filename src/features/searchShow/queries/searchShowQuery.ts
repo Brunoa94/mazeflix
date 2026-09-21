@@ -1,7 +1,11 @@
 import { defineQueryOptions } from '@pinia/colada'
 import { searchShowApi } from '../api/searchShowApi'
 
-export const searchShowQuery = defineQueryOptions(({ query }: { query: string }) => ({
+interface Props {
+  query: string
+}
+
+export const searchShowQuery = defineQueryOptions(({ query }: Props) => ({
   key: ['searchShow', query],
   query: ({ signal }) => searchShowApi({ query, signal }),
   enabled: !!query,

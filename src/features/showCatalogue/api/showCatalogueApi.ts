@@ -2,7 +2,11 @@ import { tvMazeClient } from '@/shared/api/tvMazeClient'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import { throwApiError } from '@/shared/helpers/throwApiError'
 
-export async function showCatalogueApi({ page }: { page: number }): Promise<TvMazeShowI[]> {
+interface Props {
+  page: number
+}
+
+export async function showCatalogueApi({ page }: Props): Promise<TvMazeShowI[]> {
   try {
     const urlParams = new URLSearchParams()
     urlParams.append('page', String(page))
@@ -13,6 +17,6 @@ export async function showCatalogueApi({ page }: { page: number }): Promise<TvMa
 
     return response
   } catch (e) {
-    throwApiError(e, 'SHOW_CATALOGUE')
+    throwApiError({ e, endpoint: 'SHOW_CATALOGUE' })
   }
 }

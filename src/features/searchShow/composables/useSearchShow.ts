@@ -5,12 +5,12 @@ import { computed, ref, type ComputedRef, type Ref } from 'vue'
 import type { UseQueryTypeArray } from '@/shared/types/query'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 
-type Props = UseQueryTypeArray<TvMazeShowI> & {
+type ReturnProps = UseQueryTypeArray<TvMazeShowI> & {
   query: Ref<string>
   hasQuery: ComputedRef<boolean>
 }
 
-export default function useSearchShow(): Props {
+export default function useSearchShow(): ReturnProps {
   const query = ref<string>('')
   const debouncedQuery = refDebounced(query, 300)
 

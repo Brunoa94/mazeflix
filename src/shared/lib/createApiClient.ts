@@ -1,7 +1,12 @@
 import { ApiError } from '../types/error'
 import type { HeadersType } from '../types/headers'
 
-export function createApiClient({ domain, headers }: { domain: string; headers: HeadersType }) {
+interface Props {
+  domain: string
+  headers: HeadersType
+}
+
+export function createApiClient({ domain, headers }: Props) {
   return {
     get: async <T>(path: string, options?: { signal?: AbortSignal }): Promise<T> => {
       try {

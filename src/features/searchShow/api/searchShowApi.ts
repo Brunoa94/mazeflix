@@ -4,13 +4,12 @@ import type { SearchResultI } from '../types/searchResult'
 import { toValue, type MaybeRefOrGetter } from 'vue'
 import { throwApiError } from '@/shared/helpers/throwApiError'
 
-export async function searchShowApi({
-  query,
-  signal,
-}: {
+interface Props {
   query: MaybeRefOrGetter<string>
   signal?: AbortSignal
-}): Promise<TvMazeShowI[]> {
+}
+
+export async function searchShowApi({ query, signal }: Props): Promise<TvMazeShowI[]> {
   try {
     const urlParams = new URLSearchParams()
     urlParams.append('q', toValue(query))
@@ -21,6 +20,6 @@ export async function searchShowApi({
 
     return response.map((result) => result.show)
   } catch (e) {
-    throwApiError(e, 'SEARCH_SHOW')
+    throwApiError({ e, endpoint: 'SEARCH_SHOW' })
   }
 }

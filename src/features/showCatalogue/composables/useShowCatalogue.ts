@@ -5,7 +5,11 @@ import type { CatalogueType } from '../types/catalogue'
 import type { UseQueryType } from '@/shared/types/query'
 import { computed } from 'vue'
 
-export default function useShowCatalogue({ page }: { page: number }): UseQueryType<CatalogueType> {
+interface Props {
+  page: number
+}
+
+export default function useShowCatalogue({ page }: Props): UseQueryType<CatalogueType> {
   const {
     data: tvMazeShows,
     isLoading,
