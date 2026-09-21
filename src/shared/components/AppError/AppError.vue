@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import { ApiError } from '@/shared/types/error'
-import { onMounted } from 'vue'
+import Button from '@/shared/components/Button/Button.vue'
+import Text from '@/shared/components/Text/Text.vue'
+import type { RefetchFn } from '@/shared/types/query'
 
 interface Props {
   error: ApiError | Error
+  onRetry?: RefetchFn
 }
 
-const { error } = defineProps<Props>()
-
-onMounted(() => {
-  if (error instanceof ApiError) {
-    alert('Error message: ' + error.message + ' from the endpoint: ' + error.endpoint)
-  } else {
-    alert('Error message: ' + error.message)
-  }
-})
+const { error, onRetry } = defineProps<Props>()
 </script>
+
+<template>
+  <div class="flex flex-col items-center justify-center gap-4 p-8">
+    <Text as="p" class="text-red-500">{{ error.message }}</Text>
+    <Button v-if="onRetry" variant="error" ariaLabel="Try again" @click="onRetry">
+      Try Again
+    </Button>
+  </div>
+</template>

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import ShowDetailsView from './ShowDetailsView.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import { createMockShow } from '@/shared/mock/createMockShow'
@@ -19,27 +19,30 @@ vi.mock('@/features/showDetails/composables/useShowDetails', () => ({
 import useShowDetails from '@/features/showDetails/composables/useShowDetails'
 
 const mockShow: TvMazeShowI = createMockShow(1, 'Breaking Bad')
+const mockRefetch = vi.fn()
 
 describe('ShowDetailsView', () => {
   it('shows loading state', () => {
     vi.mocked(useShowDetails).mockReturnValue({
-      isLoading: ref(true),
-      isPending: ref(false),
+      isSuspense: computed(() => true),
+      isEmpty: computed(() => false),
       item: ref(undefined),
       error: ref(null),
+      refetch: mockRefetch,
     })
 
     const wrapper = mount(ShowDetailsView)
 
-    expect(wrapper.text()).toContain('Loading')
+    expect(wrapper.find('.animate-pulse').exists()).toBe(true)
   })
 
   it('renders show components when loaded', () => {
     vi.mocked(useShowDetails).mockReturnValue({
-      isLoading: ref(false),
-      isPending: ref(false),
+      isSuspense: computed(() => false),
+      isEmpty: computed(() => false),
       item: ref(mockShow),
       error: ref(null),
+      refetch: mockRefetch,
     })
 
     const wrapper = mount(ShowDetailsView)

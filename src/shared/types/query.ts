@@ -1,10 +1,13 @@
-import type { Ref, ShallowRef } from 'vue'
+import type { ComputedRef, Ref, ShallowRef } from 'vue'
+
+export type RefetchFn = () => void
 
 export type UseQueryType<T> = {
   item: Ref<T>
-  isLoading: Ref<boolean>
-  isPending: Ref<boolean>
+  isSuspense: ComputedRef<boolean>
+  isEmpty: ComputedRef<boolean>
   error: ShallowRef<Error | null>
+  refetch: RefetchFn
 }
 
 export type UseQueryTypeArray<T> = Omit<UseQueryType<T>, 'item'> & {

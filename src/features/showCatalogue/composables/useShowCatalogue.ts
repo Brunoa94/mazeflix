@@ -6,11 +6,19 @@ import type { UseQueryType } from '@/shared/types/query'
 import { computed } from 'vue'
 
 export default function useShowCatalogue({ page }: { page: number }): UseQueryType<CatalogueType> {
-  const { data: tvMazeShows, isLoading, isPending, error } = useQuery(showCatalogQuery({ page }))
+  const {
+    data: tvMazeShows,
+    isLoading,
+    isPending,
+    error,
+    refetch,
+  } = useQuery(showCatalogQuery({ page }))
 
-  const filtered = computed(() =>
+  const item = computed(() =>
     mapTvMazeShowToCatalogue({ tvMazeShows: tvMazeShows.value ?? [] }),
   )
+  const isSuspense = computed(() => isLoading.value || isPending.value)
+  const isEmpty = computed(() => item.value.size === 0)
 
-  return { item: filtered, isLoading, isPending, error }
+  return { item, isSuspense, isEmpty, error, refetch }
 }

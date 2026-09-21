@@ -1,37 +1,23 @@
 <script setup lang="ts">
 import { useSearchStore } from '@/stores/searchStore'
-import { computed, onMounted, ref, shallowRef } from 'vue'
+import { shallowRef } from 'vue'
 import Input from '@/shared/components/Input/Input.vue'
-import { refDebounced, useFocus } from '@vueuse/core'
+import { useFocus } from '@vueuse/core'
 import Button from '@/shared/components/Button/Button.vue'
 import { XMarkIcon } from '@heroicons/vue/24/solid'
 import ShowList from '@/shared/components/ShowList/ShowList.vue'
 import Text from '@/shared/components/Text/Text.vue'
-import { searchShowQuery } from '../../queries/searchShowQuery'
-import { useQuery } from '@pinia/colada'
 import AppError from '@/shared/components/AppError/AppError.vue'
 import ShowListShimmer from '@/shared/components/ShowList/ShowListShimmer.vue'
+import useSearchShow from '../../composables/useSearchShow'
 
 const searchStore = useSearchStore()
-const query = ref<string>('')
-const debouncedQuery = refDebounced(query, 300)
 
 const inputRef = shallowRef()
 useFocus(inputRef, { initialValue: true })
 
-const {
-  data: items,
-  isLoading,
-  isPending,
-  error,
-} = useQuery(() => searchShowQuery({ query: debouncedQuery.value }))
-
-const isLoadingState = computed(() => isLoading.value || isPending.value)
-const hasQuery = computed(() => query.value.length > 0)
-const hasResults = computed(() => items.value && items.value.length > 0)
-const noResults = computed(
-  () => hasQuery.value && !isLoadingState.value && items.value?.length === 0,
-)
+const { query, items, isSuspense, hasQuery, hasResults, noResults, error, refetch } =
+  useSearchShow()
 </script>
 
 <template>
@@ -57,8 +43,8 @@ const noResults = computed(
         </div>
 
         <div aria-live="polite" aria-atomic="true">
-          <ShowListShimmer v-if="isLoadingState && hasQuery" variant="grid" />
-          <AppError v-else-if="error" :error="error" />
+          <ShowListShimmer v-if="isSuspense && hasQuery" variant="grid" />
+          <AppError v-else-if="error" :error="error" :onRetry="refetch" />
           <Text v-else-if="noResults" as="span" variant="results">No results found</Text>
           <Text v-else-if="hasResults" as="span" variant="results"
             >{{ items?.length }} results found</Text

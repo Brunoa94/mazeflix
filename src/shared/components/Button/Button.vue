@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type VariantType = 'search' | 'ghost'
+type VariantType = 'search' | 'ghost' | 'error'
 
 interface Props {
   variant?: VariantType
@@ -17,6 +17,7 @@ const variantClass: Record<VariantType, string> = {
   search:
     'px-8 py-2 bg-transparent text-(--white-text) border border-(--color-dark-gray-primary) rounded-md hover:border-(--color-gray-primary)',
   ghost: 'bg-transparent hover:opacity-80',
+  error: 'bg-(--color-red-primary) text-(--white-text) rounded-md hover:opacity-80',
 }
 </script>
 
