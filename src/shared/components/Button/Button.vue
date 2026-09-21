@@ -15,9 +15,9 @@ const emit = defineEmits<{
 
 const variantClass: Record<VariantType, string> = {
   search:
-    'bg-transparent text-(--white-text) border border-(--color-dark-gray-primary) rounded-md hover:border-(--color-gray-primary)',
+    'bg-transparent text-white border border-dark-gray-primary rounded-md hover:border-gray-primary',
   ghost: 'bg-transparent hover:opacity-80',
-  error: 'bg-(--color-red-primary) text-(--white-text) rounded-md hover:opacity-80',
+  error: 'bg-red-primary text-white rounded-md hover:opacity-80',
 }
 </script>
 

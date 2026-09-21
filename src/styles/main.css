@@ -4,9 +4,6 @@
   /** Font */
   --font-display: 'Satoshi', sans-serif;
 
-  /** Text */
-  --white-text: #ffff;
-
   /** Colors */
   --color-red-primary: #9c1111;
   --color-red-rating: #ef4444;
@@ -16,7 +13,6 @@
 
   --primary-color: #004d40;
   --secondary-color: #ffd200;
-  --color-white: #fff;
 
   /** Gradient */
   --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 100%);

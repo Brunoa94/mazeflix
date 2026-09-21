@@ -17,7 +17,7 @@ const { show } = defineProps<Props>()
     <ShowHero :show="show" />
     <ShowMetadata :show="show" />
     <Link :to="show.url" :ariaLabel="`Play ${show.name} now`" variant="play" :isExternal="true">
-      <Text as="span" class="text-black">Play Now</Text>
+      <Text as="span" color="alert">Play Now</Text>
     </Link>
   </div>
 </template>

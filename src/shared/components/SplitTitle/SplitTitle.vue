@@ -9,13 +9,13 @@ interface Props {
   accentColor?: ColorType
 }
 
-const { title, accentColor = 'secondary' } = defineProps<Props>()
+const { title, accentColor = 'primary' } = defineProps<Props>()
 
 const { firstPart, lastPart } = splitTitle(title)
 
 const colorClass: Record<ColorType, string> = {
-  primary: 'text-(--primary-color)',
-  secondary: 'text-(--secondary-color)',
+  primary: 'text-red-primary',
+  secondary: 'text-secondary-color',
 }
 </script>
 

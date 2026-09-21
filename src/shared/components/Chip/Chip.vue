@@ -21,7 +21,7 @@ const variantClass: Record<VariantType, string> = {
 <template>
   <component
     :is="as"
-    class="flex items-center justify-center text-(--white-text)"
+    class="flex items-center justify-center text-white"
     :class="variantClass[variant]"
   >
     <slot />

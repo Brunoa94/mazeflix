@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type AsType = 'p' | 'span' | 'li'
 type VariantType = 'body' | 'banner' | 'results'
-type ColorsVariants = 'default' | 'warning' | 'success' | 'ghost'
+type ColorsVariants = 'default' | 'warning' | 'success' | 'ghost' | 'alert'
 
 interface Props {
   as: AsType
@@ -17,10 +17,11 @@ const variantClass: Record<VariantType, string> = {
 }
 
 const colorClass: Record<ColorsVariants, string> = {
-  default: 'text-(--white-text)',
-  warning: 'text-(--secondary-color)',
-  success: 'text-(--primary-color)',
-  ghost: 'text-(--white-text) opacity-60',
+  default: 'text-white',
+  warning: 'text-secondary-color',
+  success: 'text-primary-color',
+  ghost: 'text-white opacity-60',
+  alert: 'text-red-primary',
 }
 </script>
 
