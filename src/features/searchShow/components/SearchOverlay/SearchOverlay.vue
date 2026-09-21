@@ -23,6 +23,7 @@ watch(() => router.currentRoute.value.path, () => {
   <Teleport v-if="searchStore.isSearchOpen" to="body">
     <Transition name="overlay">
       <div
+        v-if="searchStore.isSearchOpen"
         role="dialog"
         aria-modal="true"
         aria-label="Search shows"

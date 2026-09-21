@@ -2,7 +2,6 @@
 import Heading from '@/shared/components/Heading/Heading.vue'
 import ShowList from '@/shared/components/ShowList/ShowList.vue'
 import type { CatalogueType } from '../types/catalogue'
-import ShowListShimmer from '@/shared/components/ShowList/ShowListShimmer.vue'
 
 interface Props {
   catalogue: CatalogueType
