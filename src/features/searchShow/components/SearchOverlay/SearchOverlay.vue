@@ -14,9 +14,12 @@ const router = useRouter()
 
 const { query, items, isSuspense, hasQuery, hasResults, isEmpty, error, refetch } = useSearchShow()
 
-watch(() => router.currentRoute.value.path, () => {
+function closeSearch() {
+  query.value = ''
   searchStore.closeSearch()
-})
+}
+
+watch(() => router.currentRoute.value.path, closeSearch)
 </script>
 
 <template>
@@ -28,9 +31,9 @@ watch(() => router.currentRoute.value.path, () => {
         aria-modal="true"
         aria-label="Search shows"
         class="fixed inset-x-0 bottom-0 top-14 z-10 bg-black pt-12 p-horizontal-container-full flex flex-col gap-3 overflow-y-auto"
-        @keydown.esc="searchStore.closeSearch"
+        @keydown.esc="closeSearch"
       >
-        <SearchInput v-model="query" />
+        <SearchInput v-model="query" @close="closeSearch" />
 
         <div aria-live="polite" aria-atomic="true">
           <ShowListShimmer v-if="isSuspense && hasQuery" variant="grid" />

@@ -4,11 +4,9 @@ import Input from '@/shared/components/Input/Input.vue'
 import { useFocus } from '@vueuse/core'
 import Button from '@/shared/components/Button/Button.vue'
 import { XMarkIcon } from '@heroicons/vue/24/solid'
-import { useSearchStore } from '@/stores/searchStore'
 
 const query = defineModel<string>({ required: true })
-
-const searchStore = useSearchStore()
+const emit = defineEmits<{ close: [] }>()
 
 const inputRef = shallowRef()
 useFocus(inputRef, { initialValue: true })
@@ -22,7 +20,7 @@ useFocus(inputRef, { initialValue: true })
       placeholder="Search by name, genre, category..."
       ref="inputRef"
     />
-    <Button variant="ghost" ariaLabel="Close search" @click="searchStore.closeSearch">
+    <Button variant="ghost" ariaLabel="Close search" @click="emit('close')">
       <XMarkIcon class="size-10 text-white -mt-8" />
     </Button>
   </div>
