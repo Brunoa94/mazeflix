@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Link from '@/shared/components/Link/Link.vue'
 import Overlay from '@/shared/components/Overlay.vue'
 import SplitTitle from '@/shared/components/SplitTitle/SplitTitle.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
@@ -20,6 +21,9 @@ const imageSrc = computed(
 
 <template>
   <div class="relative w-full h-[50vh]">
+    <Link to="/" variant="outlined" ariaLabel="Go homepage" class="absolute top-8 left-4 z-10">
+      Go homepage
+    </Link>
     <img
       :src="imageSrc"
       :alt="show.name"

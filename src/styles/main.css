@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
   /** Font */
-  --font-display: 'Satoshi', sans-serif;
+  --font-display: 'Inter', sans-serif;
 
   /** Colors */
   --color-red-primary: #9c1111;
@@ -36,6 +37,10 @@
 
   /** Borders */
   --color-border-subtle: #ffffff4d;
+}
+
+body {
+  font-family: var(--font-display);
 }
 
 .overflow-scroll,
