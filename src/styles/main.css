@@ -11,8 +11,8 @@
   --color-black-primary: #000;
   --color-dark-gray-primary: #1c1c1c;
 
-  --primary-color: #004d40;
-  --secondary-color: #ffd200;
+  --color-primary-color: #004d40;
+  --color-secondary-color: #ffd200;
 
   /** Gradient */
   --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 100%);

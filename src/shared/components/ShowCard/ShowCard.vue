@@ -4,6 +4,7 @@ import Chip from '@/shared/components/Chip/Chip.vue'
 import Heading from '@/shared/components/Heading/Heading.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import Overlay from '@/shared/components/Overlay.vue'
+import { StarIcon } from '@heroicons/vue/24/solid'
 import { computed } from 'vue'
 
 const PLACEHOLDER_IMAGE = 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png'
@@ -31,7 +32,7 @@ const variantClass: Record<VariantType, string> = {
     :to="{ name: 'showDetails', params: { id: item.id } }"
     :aria-label="`View details for ${item.name}}`"
     :class="[
-      'flex items-start relative rounded-xl overflow-hidden',
+      'flex items-start relative rounded-xl overflow-hidden max-w-52.5',
       'hover:scale-110 transition-all duration-300',
       variantClass[variant],
     ]"
@@ -46,6 +47,7 @@ const variantClass: Record<VariantType, string> = {
     <Overlay>
       <div class="h-full w-full flex flex-col justify-end gap-2 p-4 rounded-xl">
         <Chip variant="rating" class="min-h-12">
+          <StarIcon class="size-4 text-white" />
           <Text as="span" variant="banner">{{ item.rating.average ?? '-' }}</Text>
         </Chip>
         <Heading as="h3"> {{ item.name }} </Heading>

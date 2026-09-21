@@ -12,7 +12,7 @@ const { variant = 'language', as = 'span' } = defineProps<Props>()
 const variantClass: Record<VariantType, string> = {
   language: 'px-3 py-1 rounded text-sm bg-bg-chip',
   genre: 'px-3 py-1 rounded text-sm bg-bg-chip-genre',
-  rating: 'w-12 py-1 bg-red-rating rounded-md',
+  rating: 'w-16 py-1 bg-red-rating rounded-md flex justify-center items-center gap-1',
   logo: 'px-2 py-1 bg-red-primary rounded-lg',
   outlined: 'px-4 py-2 border border-border-subtle rounded-full text-sm',
 }

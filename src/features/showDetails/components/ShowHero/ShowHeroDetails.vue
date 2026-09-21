@@ -2,6 +2,7 @@
 import Chip from '@/shared/components/Chip/Chip.vue'
 import Text from '@/shared/components/Text/Text.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
+import { StarIcon } from '@heroicons/vue/16/solid'
 import { computed } from 'vue'
 
 interface Props {
@@ -16,7 +17,10 @@ const isEnded = computed(() => props.show.status === 'Ended')
 
 <template>
   <div class="flex items-center gap-3">
-    <Text as="span" color="success"> {{ show.rating?.average ?? 'No' }} Rating </Text>
+    <div class="flex items-center gap-1">
+      <StarIcon class="size-4 text-primary-color" />
+      <Text as="span" color="success"> {{ show.rating?.average ?? 'No' }} Rating </Text>
+    </div>
     <Text as="span" color="ghost">•</Text>
     <Text as="span">{{ year }}</Text>
     <Text as="span" color="ghost">•</Text>
