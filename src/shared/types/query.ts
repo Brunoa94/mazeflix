@@ -12,4 +12,5 @@ export type UseQueryType<T> = {
 
 export type UseQueryTypeArray<T> = Omit<UseQueryType<T>, 'item'> & {
   items: ShallowRef<T[] | undefined>
+  hasResults: ComputedRef<boolean>
 }

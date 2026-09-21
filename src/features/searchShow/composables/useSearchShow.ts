@@ -1,9 +1,16 @@
 import { useQuery } from '@pinia/colada'
 import { searchShowQuery } from '../queries/searchShowQuery'
 import { refDebounced } from '@vueuse/core'
-import { computed, ref } from 'vue'
+import { computed, ref, type ComputedRef, type Ref } from 'vue'
+import type { UseQueryTypeArray } from '@/shared/types/query'
+import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 
-export default function useSearchShow() {
+type Props = UseQueryTypeArray<TvMazeShowI> & {
+  query: Ref<string>
+  hasQuery: ComputedRef<boolean>
+}
+
+export default function useSearchShow(): Props {
   const query = ref<string>('')
   const debouncedQuery = refDebounced(query, 300)
 
@@ -17,8 +24,8 @@ export default function useSearchShow() {
 
   const isSuspense = computed(() => isLoading.value || isPending.value)
   const hasQuery = computed(() => query.value.length > 0)
-  const hasResults = computed(() => items.value && items.value.length > 0)
-  const noResults = computed(() => hasQuery.value && !isSuspense.value && items.value?.length === 0)
+  const hasResults = computed(() => !!(items.value && items.value.length > 0))
+  const isEmpty = computed(() => hasQuery.value && !isSuspense.value && items.value?.length === 0)
 
   return {
     query,
@@ -26,7 +33,7 @@ export default function useSearchShow() {
     isSuspense,
     hasQuery,
     hasResults,
-    noResults,
+    isEmpty,
     error,
     refetch,
   }
