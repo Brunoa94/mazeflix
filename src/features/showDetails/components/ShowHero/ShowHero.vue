@@ -13,16 +13,20 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const backgroundImage = computed(
+const imageSrc = computed(
   () => props.show.image?.original ?? props.show.image?.medium ?? PLACEHOLDER_IMAGE,
 )
 </script>
 
 <template>
-  <div
-    class="relative w-full h-[50vh] bg-cover bg-center bg-no-repeat"
-    :style="{ backgroundImage: `url(${backgroundImage})` }"
-  >
+  <div class="relative w-full h-[50vh]">
+    <img
+      :src="imageSrc"
+      :alt="show.name"
+      loading="lazy"
+      decoding="async"
+      class="inset-0 w-full h-full object-cover"
+    />
     <Overlay variant="hero">
       <div class="h-full flex flex-col justify-end items-center gap-4 p-8">
         <SplitTitle :title="show.name" />

@@ -17,7 +17,7 @@ interface Props {
 
 const { variant = 'vertical', item } = defineProps<Props>()
 
-const backgroundImage = computed(() => item.image?.medium ?? PLACEHOLDER_IMAGE)
+const imageSrc = computed(() => item.image?.medium ?? PLACEHOLDER_IMAGE)
 
 const variantClass: Record<VariantType, string> = {
   vertical: 'h-[300px] w-[220px] bg-black',
@@ -31,11 +31,17 @@ const variantClass: Record<VariantType, string> = {
     :aria-label="`View details for ${item.name}}`"
     :class="[
       'flex items-start relative rounded-xl overflow-hidden',
-      'hover:scale-110 transition-all duration-300 bg-cover bg-center bg-no-repeat',
+      'hover:scale-110 transition-all duration-300',
       variantClass[variant],
     ]"
-    :style="{ backgroundImage: `url(${backgroundImage})` }"
   >
+    <img
+      :src="imageSrc"
+      :alt="item.name"
+      loading="lazy"
+      decoding="async"
+      class="inset-0 w-full h-full object-cover"
+    />
     <Overlay>
       <div class="h-full w-full flex flex-col justify-end gap-2 p-4 rounded-xl">
         <Chip variant="rating" class="min-h-12">
