@@ -17,7 +17,7 @@ useFocus(inputRef, { initialValue: true })
     <Input
       v-model="query"
       ariaLabel="Write your search"
-      placeholder="Search by name, genre, category..."
+      placeholder="Search shows by name..."
       ref="inputRef"
     />
     <Button variant="ghost" ariaLabel="Close search" @click="emit('close')">

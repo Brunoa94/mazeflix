@@ -7,7 +7,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: HomepageView },
-    { path: '/show/:id', name: 'showDetails', component: ShowDetailsView },
+    { path: '/show/:id([1-9]\\d*)', name: 'showDetails', component: ShowDetailsView },
     { path: '/:pathMatch(.*)*', name: 'notFound', component: NotFoundView },
   ],
 })

@@ -1,24 +1,17 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { createPinia, setActivePinia } from 'pinia'
 import SearchTrigger from './SearchTrigger.vue'
-import { useSearchStore } from '@/stores/searchStore'
-
-vi.mock('vue-router', () => ({
-  useRouter: () => ({
-    currentRoute: { value: { path: '/' } },
-  }),
-}))
+import SearchOverlay from '../SearchOverlay/SearchOverlay.vue'
 
 vi.mock('../SearchOverlay/SearchOverlay.vue', () => ({
-  default: { template: '<div data-testid="search-overlay"></div>' },
+  default: {
+    props: ['open'],
+    emits: ['close'],
+    template: '<div v-if="open" data-testid="search-overlay"></div>',
+  },
 }))
 
 describe('the SearchTrigger component', () => {
-  beforeEach(() => {
-    setActivePinia(createPinia())
-  })
-
   it('shows search button with correct text', () => {
     const wrapper = mount(SearchTrigger)
 
@@ -27,13 +20,12 @@ describe('the SearchTrigger component', () => {
 
   it('opens search overlay when clicked', async () => {
     const wrapper = mount(SearchTrigger)
-    const searchStore = useSearchStore()
 
-    expect(searchStore.isSearchOpen).toBe(false)
+    expect(wrapper.find('[data-testid="search-overlay"]').exists()).toBe(false)
 
     await wrapper.find('button').trigger('click')
 
-    expect(searchStore.isSearchOpen).toBe(true)
+    expect(wrapper.find('[data-testid="search-overlay"]').exists()).toBe(true)
   })
 
   it('has correct aria-label', () => {

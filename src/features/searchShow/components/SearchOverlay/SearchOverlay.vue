@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSearchStore } from '@/stores/searchStore'
 import ShowList from '@/shared/components/ShowList/ShowList.vue'
 import Text from '@/shared/components/Text/Text.vue'
 import AppError from '@/shared/components/AppError/AppError.vue'
@@ -9,24 +8,25 @@ import useSearchShow from '../../composables/useSearchShow'
 import { useRouter } from 'vue-router'
 import { watch } from 'vue'
 
-const searchStore = useSearchStore()
+defineProps<{ open: boolean }>()
+const emit = defineEmits<{ close: [] }>()
 const router = useRouter()
 
 const { query, items, isSuspense, hasQuery, hasResults, isEmpty, error, refetch } = useSearchShow()
 
 function closeSearch() {
   query.value = ''
-  searchStore.closeSearch()
+  emit('close')
 }
 
 watch(() => router.currentRoute.value.path, closeSearch)
 </script>
 
 <template>
-  <Teleport v-if="searchStore.isSearchOpen" to="body">
+  <Teleport v-if="open" to="body">
     <Transition name="overlay">
       <div
-        v-if="searchStore.isSearchOpen"
+        v-if="open"
         role="dialog"
         aria-modal="true"
         aria-label="Search shows"

@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import ShowList from './ShowList.vue'
+import ShowCard from '../ShowCard/ShowCard.vue'
 import { createMockShow } from '@/shared/mock/createMockShow.ts'
 
 describe('the ShowList component', () => {
@@ -50,5 +51,6 @@ describe('the ShowList component', () => {
 
     expect(wrapper.find('ul').classes()).toContain('grid')
     expect(wrapper.findAll('li')).toHaveLength(2)
+    expect(wrapper.findAllComponents(ShowCard).every((card) => card.props('fluid'))).toBe(true)
   })
 })

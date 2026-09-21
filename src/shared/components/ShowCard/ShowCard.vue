@@ -13,14 +13,15 @@ type VariantType = 'vertical' | 'horizontal'
 interface Props {
   variant?: VariantType
   item: TvMazeShowI
+  fluid?: boolean
 }
 
-const { variant = 'vertical', item } = defineProps<Props>()
+const { variant = 'vertical', item, fluid = false } = defineProps<Props>()
 
 const imageSrc = computed(() => item.image?.medium ?? PLACEHOLDER_IMAGE)
 
 const variantClass: Record<VariantType, string> = {
-  vertical: 'h-[300px] w-[220px] bg-black',
+  vertical: fluid ? '' : 'h-[300px] w-[220px] bg-black',
   horizontal: '',
 }
 </script>

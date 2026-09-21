@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { mount, VueWrapper } from '@vue/test-utils'
 import { ref } from 'vue'
 import SearchOverlay from './SearchOverlay.vue'
-import { useSearchStore } from '@/stores/searchStore'
 
 vi.mock('vue-router', () => ({
   useRouter: () => ({
@@ -15,6 +14,7 @@ describe('the SearchOverlay component', () => {
 
   beforeEach(() => {
     wrapper = mount(SearchOverlay, {
+      props: { open: false },
       attachTo: document.body,
     })
   })
@@ -28,39 +28,27 @@ describe('the SearchOverlay component', () => {
   })
 
   it('renders overlay when search is open', async () => {
-    const searchStore = useSearchStore()
-
-    searchStore.openSearch()
-    await wrapper.vm.$nextTick()
+    await wrapper.setProps({ open: true })
 
     expect(document.body.querySelector('.fixed')).not.toBeNull()
   })
 
   it('show input with correct placeholder', async () => {
-    const searchStore = useSearchStore()
-
-    searchStore.openSearch()
-    await wrapper.vm.$nextTick()
+    await wrapper.setProps({ open: true })
 
     const input = document.body.querySelector('input')
-    expect(input?.getAttribute('placeholder')).toBe('Search by name, genre, category...')
+    expect(input?.getAttribute('placeholder')).toBe('Search shows by name...')
   })
 
   it('renders aria-label', async () => {
-    const searchStore = useSearchStore()
-
-    searchStore.openSearch()
-    await wrapper.vm.$nextTick()
+    await wrapper.setProps({ open: true })
 
     const input = document.body.querySelector('input')
     expect(input?.getAttribute('aria-label')).toBe('Write your search')
   })
 
-  it('closes the overlay when close button is clicked', async () => {
-    const searchStore = useSearchStore()
-
-    searchStore.openSearch()
-    await wrapper.vm.$nextTick()
+  it('emits close when close button is clicked', async () => {
+    await wrapper.setProps({ open: true })
 
     const closeButton = document.body.querySelector('button[aria-label="Close search"]')
     expect(closeButton).not.toBeNull()
@@ -68,6 +56,6 @@ describe('the SearchOverlay component', () => {
     closeButton?.dispatchEvent(new Event('click'))
     await wrapper.vm.$nextTick()
 
-    expect(searchStore.isSearchOpen).toBe(false)
+    expect(wrapper.emitted('close')).toHaveLength(1)
   })
 })
