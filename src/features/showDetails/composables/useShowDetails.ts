@@ -9,7 +9,9 @@ export default function useShowDetails({
 }: {
   id: MaybeRefOrGetter<number>
 }): UseQueryType<TvMazeShowI | undefined> {
-  const { data, isLoading, isPending, error } = useQuery(showDetailsQuery({ id: toValue(id) }))
+  const { data, isLoading, isPending, error } = useQuery(() =>
+    showDetailsQuery({ id: toValue(id) }),
+  )
 
   return { item: data, isLoading, isPending, error }
 }

@@ -16,9 +16,6 @@ const variantClass: Record<VariantType, string> = {
 <template>
   <div
     aria-hidden="true"
-    :class="[
-      'rounded-xl bg-neutral-800 animate-pulse',
-      variantClass[variant],
-    ]"
+    :class="['rounded-xl bg-neutral-800 animate-pulse', variantClass[variant]]"
   />
 </template>

@@ -11,7 +11,12 @@ const { item: show, isLoading, error } = useShowDetails({ id })
 </script>
 
 <template>
-  <div v-if="isLoading" role="status" aria-live="polite" class="flex items-center justify-center h-screen">
+  <div
+    v-if="isLoading"
+    role="status"
+    aria-live="polite"
+    class="flex items-center justify-center h-screen"
+  >
     <span class="text-(--white-text)">Loading...</span>
   </div>
 
