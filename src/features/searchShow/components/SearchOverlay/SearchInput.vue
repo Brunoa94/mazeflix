@@ -1,0 +1,29 @@
+<script setup lang="ts">
+import { shallowRef } from 'vue'
+import Input from '@/shared/components/Input/Input.vue'
+import { useFocus } from '@vueuse/core'
+import Button from '@/shared/components/Button/Button.vue'
+import { XMarkIcon } from '@heroicons/vue/24/solid'
+import { useSearchStore } from '@/stores/searchStore'
+
+const query = defineModel<string>({ required: true })
+
+const searchStore = useSearchStore()
+
+const inputRef = shallowRef()
+useFocus(inputRef, { initialValue: true })
+</script>
+
+<template>
+  <div class="flex items-center w-full">
+    <Input
+      v-model="query"
+      ariaLabel="Write your search"
+      placeholder="Search by name, genre, category..."
+      ref="inputRef"
+    />
+    <Button variant="ghost" ariaLabel="Close search" @click="searchStore.closeSearch">
+      <XMarkIcon class="size-10 text-white -mt-8" />
+    </Button>
+  </div>
+</template>
