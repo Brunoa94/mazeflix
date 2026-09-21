@@ -4,6 +4,9 @@ import Chip from '@/shared/components/Chip/Chip.vue'
 import Heading from '@/shared/components/Heading/Heading.vue'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import Overlay from '@/shared/components/Overlay.vue'
+import { computed } from 'vue'
+
+const PLACEHOLDER_IMAGE = 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png'
 
 type VariantType = 'vertical' | 'horizontal'
 
@@ -13,6 +16,8 @@ interface Props {
 }
 
 const { variant = 'vertical', item } = defineProps<Props>()
+
+const backgroundImage = computed(() => item.image?.medium ?? PLACEHOLDER_IMAGE)
 
 const variantClass: Record<VariantType, string> = {
   vertical: 'h-[300px] w-[220px] bg-black',
@@ -29,7 +34,7 @@ const variantClass: Record<VariantType, string> = {
       'hover:scale-110 transition-all duration-300 bg-cover bg-center bg-no-repeat',
       variantClass[variant],
     ]"
-    :style="{ backgroundImage: item.image ? `url(${item.image.medium})` : undefined }"
+    :style="{ backgroundImage: `url(${backgroundImage})` }"
   >
     <Overlay>
       <div class="h-full w-full flex flex-col justify-end gap-2 p-4 rounded-xl">

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Text from './Text.vue'
 
-describe('Text', () => {
+describe('the Text component', () => {
   it('renders slot content', () => {
     const wrapper = mount(Text, {
       props: { as: 'p' },

@@ -13,8 +13,8 @@ const variantClass: Record<VariantType, string> = {
   section: 'text-xl font-bold text-(--white-text)',
   title: 'text-4xl font-bold text-(--white-text)',
   card: 'text-sm font-medium text-(--white-text)',
-  logo: 'text-2xl font-black tracking-tight text-(--color-red-primary)',
-  'details-title': 'text-md tracking-widest text-(--white-text) uppercase',
+  logo: 'text-2xl font-black text-(--color-red-primary)',
+  'details-title': 'text-base text-(--white-text) uppercase',
 }
 </script>
 

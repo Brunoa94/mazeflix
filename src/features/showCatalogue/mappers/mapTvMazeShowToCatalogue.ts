@@ -1,4 +1,3 @@
-import type { TvMazeGenreType } from '@/shared/types/tvMaze/tvMazeGenre'
 import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import type { CatalogueType } from '../types/catalogue'
 
@@ -7,10 +6,10 @@ export function mapTvMazeShowToCatalogue({
 }: {
   tvMazeShows: TvMazeShowI[]
 }): CatalogueType {
-  const genresMap = new Map<TvMazeGenreType, TvMazeShowI[]>()
+  const genresMap = new Map<string, TvMazeShowI[]>()
 
   tvMazeShows.forEach((show: TvMazeShowI) => {
-    show.genres.forEach((genre: TvMazeGenreType) => {
+    show.genres.forEach((genre: string) => {
       const existingGenre = genresMap.get(genre)
 
       if (existingGenre) {

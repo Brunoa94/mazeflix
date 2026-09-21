@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Heading from './Heading.vue'
 
-describe('Heading', () => {
+describe('the Heading component', () => {
   it('renders slot content', () => {
     const wrapper = mount(Heading, {
       slots: { default: 'My Title' },
@@ -11,7 +11,7 @@ describe('Heading', () => {
     expect(wrapper.text()).toBe('My Title')
   })
 
-  it('renders as h2 by default', () => {
+  it('shows as h2 by default', () => {
     const wrapper = mount(Heading, {
       slots: { default: 'Title' },
     })
@@ -19,7 +19,7 @@ describe('Heading', () => {
     expect(wrapper.get('h2').text()).toBe('Title')
   })
 
-  it('renders as h1 when specified', () => {
+  it('shows as h1 when specified', () => {
     const wrapper = mount(Heading, {
       props: { as: 'h1' },
       slots: { default: 'Title' },

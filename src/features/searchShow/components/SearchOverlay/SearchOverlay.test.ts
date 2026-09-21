@@ -1,7 +1,14 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { mount, VueWrapper } from '@vue/test-utils'
+import { ref } from 'vue'
 import SearchOverlay from './SearchOverlay.vue'
 import { useSearchStore } from '@/stores/searchStore'
+
+vi.mock('vue-router', () => ({
+  useRouter: () => ({
+    currentRoute: ref({ path: '/' }),
+  }),
+}))
 
 describe('the SearchOverlay component', () => {
   let wrapper: VueWrapper

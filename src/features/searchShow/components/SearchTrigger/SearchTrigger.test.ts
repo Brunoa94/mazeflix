@@ -4,7 +4,13 @@ import { createPinia, setActivePinia } from 'pinia'
 import SearchTrigger from './SearchTrigger.vue'
 import { useSearchStore } from '@/stores/searchStore'
 
-vi.mock('./SearchOverlay.vue', () => ({
+vi.mock('vue-router', () => ({
+  useRouter: () => ({
+    currentRoute: { value: { path: '/' } },
+  }),
+}))
+
+vi.mock('../SearchOverlay/SearchOverlay.vue', () => ({
   default: { template: '<div data-testid="search-overlay"></div>' },
 }))
 

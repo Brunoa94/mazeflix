@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import SplitTitle from './SplitTitle.vue'
 
-describe('SplitTitle', () => {
-  it('renders title with last word in accent span', () => {
+describe('the SplitTitle component', () => {
+  it('shows title with last word in accent span', () => {
     const wrapper = mount(SplitTitle, {
       props: { title: 'Hello World' },
     })
@@ -12,7 +12,7 @@ describe('SplitTitle', () => {
     expect(wrapper.find('span').text()).toBe('World')
   })
 
-  it('return single word if just one', () => {
+  it('shows single word if just one', () => {
     const wrapper = mount(SplitTitle, {
       props: { title: 'Mazeflix' },
     })

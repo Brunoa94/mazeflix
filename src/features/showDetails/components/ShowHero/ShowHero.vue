@@ -5,13 +5,17 @@ import type { TvMazeShowI } from '@/shared/types/tvMaze/tvMazeShow'
 import { computed } from 'vue'
 import ShowHeroDetails from './ShowHeroDetails.vue'
 
+const PLACEHOLDER_IMAGE = 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png'
+
 interface Props {
   show: TvMazeShowI
 }
 
 const props = defineProps<Props>()
 
-const backgroundImage = computed(() => props.show.image?.original)
+const backgroundImage = computed(
+  () => props.show.image?.original ?? props.show.image?.medium ?? PLACEHOLDER_IMAGE,
+)
 </script>
 
 <template>

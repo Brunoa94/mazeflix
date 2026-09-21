@@ -6,7 +6,7 @@ import { createMockShow } from '@/shared/mock/createMockShow.ts'
 describe('the ShowCard component', () => {
   const mockTvMazeShow = createMockShow(1, 'Breaking Bad')
 
-  it('renders TvMaze show name', () => {
+  it('shows TvMaze show name', () => {
     const wrapper = mount(ShowCard, {
       props: { item: mockTvMazeShow },
       global: { stubs: { RouterLink: RouterLinkStub } },
@@ -15,7 +15,7 @@ describe('the ShowCard component', () => {
     expect(wrapper.get('h3').text()).toBe('Breaking Bad')
   })
 
-  it('renders show rating', () => {
+  it('shows show rating', () => {
     const wrapper = mount(ShowCard, {
       props: { item: mockTvMazeShow },
       global: { stubs: { RouterLink: RouterLinkStub } },

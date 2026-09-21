@@ -30,7 +30,7 @@ describe('the ShowList component', () => {
     expect(wrapper.findAll('a')).toHaveLength(0)
   })
 
-  it('renders horizontal variant by default', () => {
+  it('shows horizontal variant by default', () => {
     const shows = [createMockShow(1, 'Breaking Bad'), createMockShow(2, 'Prison Break')]
 
     const wrapper = mount(ShowList, {
@@ -41,7 +41,7 @@ describe('the ShowList component', () => {
     expect(wrapper.findAll('li')).toHaveLength(2)
   })
 
-  it('renders grid variant when specified', () => {
+  it('shows grid variant when specified', () => {
     const shows = [createMockShow(1, 'Breaking Bad'), createMockShow(2, 'Prison Break')]
 
     const wrapper = mount(ShowList, {

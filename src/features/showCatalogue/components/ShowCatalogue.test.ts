@@ -14,7 +14,7 @@ describe('the ShowCatalogue component', () => {
     ])
   }
 
-  it('renders a section for each genre', () => {
+  it('shows a section for each genre', () => {
     const catalogue = createMockCatalogue()
 
     const wrapper = mount(ShowCatalogue, {

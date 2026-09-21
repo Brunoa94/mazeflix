@@ -12,7 +12,7 @@ interface Props {
 const { as = 'p', variant, color = 'default' } = defineProps<Props>()
 const variantClass: Record<VariantType, string> = {
   body: 'text-lg font-normal',
-  banner: 'text-md font-normal',
+  banner: 'text-base font-normal',
   results: 'text-3xl opacity-80',
 }
 

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Button from './Button.vue'
 
-describe('Button', () => {
+describe('the Button component', () => {
   const wrapper = mount(Button, {
     props: { ariaLabel: 'Submit form' },
     slots: { default: 'Submit' },

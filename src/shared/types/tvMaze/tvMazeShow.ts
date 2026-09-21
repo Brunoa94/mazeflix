@@ -1,5 +1,3 @@
-import type { TvMazeGenreType } from './tvMazeGenre'
-
 interface TvMazeNetworkI {
   id: number
   name: string
@@ -38,7 +36,7 @@ export interface TvMazeShowI {
   name: string
   type: string
   language: string | null
-  genres: TvMazeGenreType[]
+  genres: string[]
   status: string
   runtime: number | null
   averageRuntime: number | null
@@ -51,7 +49,7 @@ export interface TvMazeShowI {
   network: TvMazeNetworkI | null
   webChannel: TvMazeWebChannelI | null
   externals: TvMazeExternalsI
-  image: TvMazeImageI
+  image: TvMazeImageI | null
   summary: string | null
   updated: number
 }
