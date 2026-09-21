@@ -24,7 +24,7 @@ const variantClass: Record<VariantType, { ul: string; li: string }> = {
 </script>
 
 <template>
-  <ul :class="variantClass[variant].ul">
+  <ul :class="variantClass[variant].ul" :aria-label="`${items.length} TV shows`">
     <li v-for="item in items" :key="item.id" :class="variantClass[variant].li">
       <ShowCard :item="item" />
     </li>

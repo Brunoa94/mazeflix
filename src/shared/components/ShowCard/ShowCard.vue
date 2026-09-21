@@ -23,7 +23,7 @@ const variantClass: Record<VariantType, string> = {
 <template>
   <RouterLink
     :to="{ name: 'showDetails', params: { id: item.id } }"
-    :aria-label="`View details for ${item.name}`"
+    :aria-label="`View details for ${item.name}}`"
     :class="[
       'flex items-start relative rounded-xl overflow-hidden',
       'hover:scale-110 transition-all duration-300 bg-cover bg-center bg-no-repeat',

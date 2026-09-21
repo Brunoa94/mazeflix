@@ -16,7 +16,7 @@ const { show } = defineProps<Props>()
   <div class="flex flex-col items-center pb-16">
     <ShowHero :show="show" />
     <ShowMetadata :show="show" />
-    <Link :to="show.url" ariaLabel="Play Now" variant="play" :isExternal="true">
+    <Link :to="show.url" :ariaLabel="`Play ${show.name} now on TVMaze`" variant="play" :isExternal="true">
       <Text as="span" class="text-black">Play Now</Text>
     </Link>
   </div>
