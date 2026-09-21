@@ -53,7 +53,7 @@ The shared folder also contains all the atomic components of the project in the 
 ### Search implementation
 
 To implement the search functionality, the first thing to consider was API overload. For that, a debouncing mechanism was implemented, which only triggers the search when the user stops writing. Queries were also integrated (also used for the catalogue), which give access to a built in cache that reduces unnecessary refetching. Cached data can still be refetched when it becomes stale. Apart from this, the query's abort signal, managed by `@pinia/colada`, was also passed to `fetch` to support cancelling unnecessary requests.
-The overlay approach was followed in order to make the component reusable and adaptable to every screen of the webpage without the usage of an additional global store. For proper accessibility, auto focus on the input when mounting and closing through Escape were implemented, as well as the proper aria labels for modal behaviour.
+The overlay approach was followed in order to make the component reusable and adaptable to every screen of the webpage without the usage of an additional global store. For proper accessibility, auto focus on the input when mounting and closing through Escape were implemented, as well as the proper aria labels for modal behaviour and HTML semantics.
 
 ### Design System
 

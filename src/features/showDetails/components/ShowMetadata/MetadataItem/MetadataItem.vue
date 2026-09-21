@@ -12,7 +12,7 @@ defineProps<Props>()
 
 <template>
   <div class="flex flex-col items-center gap-2">
-    <Heading as="h3" variant="details-title">{{ label }}</Heading>
+    <Heading as="h2" variant="details-title">{{ label }}</Heading>
     <Text as="p" variant="body">{{ value }}</Text>
   </div>
 </template>

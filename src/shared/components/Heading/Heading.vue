@@ -5,9 +5,10 @@ type VariantType = 'section' | 'title' | 'card' | 'logo' | 'details-title'
 interface Props {
   as?: AsType
   variant?: VariantType
+  id?: string
 }
 
-const { as = 'h2', variant = 'section' } = defineProps<Props>()
+const { as = 'h2', variant = 'section', id } = defineProps<Props>()
 
 const variantClass: Record<VariantType, string> = {
   section: 'text-xl font-bold text-white',
@@ -19,7 +20,7 @@ const variantClass: Record<VariantType, string> = {
 </script>
 
 <template>
-  <component :is="as" :class="variantClass[variant]">
+  <component :is="as" :id="id" :class="variantClass[variant]">
     <slot />
   </component>
 </template>

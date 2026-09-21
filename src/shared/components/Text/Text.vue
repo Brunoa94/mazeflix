@@ -1,6 +1,6 @@
 <script setup lang="ts">
 type AsType = 'p' | 'span' | 'li'
-type VariantType = 'body' | 'banner' | 'results'
+type VariantType = 'body' | 'banner' | 'results' | 'button'
 type ColorsVariants = 'default' | 'warning' | 'success' | 'ghost' | 'alert'
 
 interface Props {
@@ -14,6 +14,7 @@ const variantClass: Record<VariantType, string> = {
   body: 'text-lg font-normal',
   banner: 'text-base font-normal',
   results: 'text-3xl opacity-80',
+  button: 'text-xl font-bold',
 }
 
 const colorClass: Record<ColorsVariants, string> = {

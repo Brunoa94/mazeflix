@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type VariantType = 'play'
+type VariantType = 'play' | 'playLarge'
 
 interface Props {
   variant?: VariantType
@@ -12,6 +12,7 @@ const { variant = 'play', ariaLabel, to, isExternal = false } = defineProps<Prop
 
 const variantClass: Record<VariantType, string> = {
   play: 'flex items-center bg-white font-bold rounded-lg hover:opacity-80 px-12 py-4 cursor-pointer justify-center w-fit focus:outline-2 focus:outline-offset-2 focus:outline-white',
+  playLarge: 'flex items-center bg-white font-bold rounded-lg hover:opacity-80 px-16 py-5 cursor-pointer justify-center w-fit focus:outline-2 focus:outline-offset-2 focus:outline-white',
 }
 </script>
 
