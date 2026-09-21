@@ -10,6 +10,7 @@ import Text from '@/shared/components/Text/Text.vue'
 import { searchShowQuery } from '../../queries/searchShowQuery'
 import { useQuery } from '@pinia/colada'
 import AppError from '@/shared/components/AppError/AppError.vue'
+import ShowListShimmer from '@/shared/components/ShowList/ShowListShimmer.vue'
 
 const searchStore = useSearchStore()
 const query = ref<string>('')
@@ -26,7 +27,7 @@ const {
 } = useQuery(() => searchShowQuery({ query: debouncedQuery.value }))
 
 const isLoadingState = computed(() => isLoading.value || isPending.value)
-const hasQuery = computed(() => debouncedQuery.value.length > 0)
+const hasQuery = computed(() => query.value.length > 0)
 const hasResults = computed(() => items.value && items.value.length > 0)
 const noResults = computed(
   () => hasQuery.value && !isLoadingState.value && items.value?.length === 0,
@@ -56,7 +57,7 @@ const noResults = computed(
         </div>
 
         <div aria-live="polite" aria-atomic="true">
-          <Text v-if="isLoadingState && hasQuery" as="span" variant="results">Searching...</Text>
+          <ShowListShimmer v-if="isLoadingState && hasQuery" variant="grid" />
           <AppError v-else-if="error" :error="error" />
           <Text v-else-if="noResults" as="span" variant="results">No results found</Text>
           <Text v-else-if="hasResults" as="span" variant="results"

@@ -8,7 +8,7 @@ const { isLoading, item: catalogue, error } = useShowCatalogue({ page: 1 })
 </script>
 
 <template>
-  <AppError v-if="error" :error="error" />
   <ShowCatalogueShimmer v-if="isLoading" />
-  <ShowCatalogue :catalogue="catalogue" :isLoading="isLoading" />
+  <AppError v-else-if="error" :error="error" />
+  <ShowCatalogue v-else :catalogue="catalogue" />
 </template>
