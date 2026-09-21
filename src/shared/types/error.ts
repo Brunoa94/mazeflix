@@ -1,10 +1,9 @@
-export class ApiError extends Error {
+export type EndpointsType = 'SEARCH_SHOW' | 'SHOW_CATALOGUE' | 'SHOW_DETAILS'
+
+export class ApiError {
   constructor(
     public status: number,
-    message: string,
-    public endpoint?: string,
-  ) {
-    super(message)
-    this.name = 'ApiError'
-  }
+    public message: string = 'Something went wrong',
+    public endpoint?: EndpointsType,
+  ) {}
 }

@@ -4,19 +4,25 @@ import type { HeadersType } from '../types/headers'
 export function createApiClient({ domain, headers }: { domain: string; headers: HeadersType }) {
   return {
     get: async <T>(path: string, options?: { signal?: AbortSignal }): Promise<T> => {
-      const url = `${domain}${path}`
+      try {
+        const url = `${domain}${path}`
 
-      const response = await fetch(url, {
-        method: 'GET',
-        headers,
-        signal: options?.signal,
-      })
+        const response = await fetch(url, {
+          method: 'GET',
+          headers,
+          signal: options?.signal,
+        })
 
-      if (!response.ok) {
-        throw new ApiError(response.status, response.statusText, path)
+        if (!response.ok) {
+          throw new ApiError(response.status, response.statusText)
+        }
+
+        return await response.json()
+      } catch (e) {
+        if (e instanceof ApiError) throw e
+
+        throw new ApiError(500, e instanceof Error ? e.message : 'Network error')
       }
-
-      return await response.json()
     },
   }
 }
