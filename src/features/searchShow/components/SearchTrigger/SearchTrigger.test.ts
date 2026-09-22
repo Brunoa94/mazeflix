@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import SearchTrigger from './SearchTrigger.vue'
-import SearchOverlay from '../SearchOverlay/SearchOverlay.vue'
 
 vi.mock('../SearchOverlay/SearchOverlay.vue', () => ({
   default: {
