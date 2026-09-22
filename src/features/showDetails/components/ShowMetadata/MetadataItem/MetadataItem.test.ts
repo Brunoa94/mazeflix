@@ -8,7 +8,7 @@ describe('the MetadataItem component', () => {
       props: { label: 'NETWORK', value: 'AMC' },
     })
 
-    expect(wrapper.get('h3').text()).toBe('NETWORK')
+    expect(wrapper.get('h2').text()).toBe('NETWORK')
     expect(wrapper.get('p').text()).toBe('AMC')
   })
 })
