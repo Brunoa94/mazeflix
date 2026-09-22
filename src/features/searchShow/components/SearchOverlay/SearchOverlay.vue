@@ -23,7 +23,7 @@ watch(() => router.currentRoute.value.path, closeSearch)
 </script>
 
 <template>
-  <Teleport v-if="open" to="body">
+  <Teleport to="body">
     <Transition name="overlay">
       <div
         v-if="open"
