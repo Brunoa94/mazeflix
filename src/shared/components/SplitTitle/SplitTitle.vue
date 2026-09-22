@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { splitTitle } from '@/shared/helpers/splitTitle'
 import Heading from '../Heading/Heading.vue'
 
@@ -11,7 +12,7 @@ interface Props {
 
 const { title, accentColor = 'primary' } = defineProps<Props>()
 
-const { firstPart, lastPart } = splitTitle(title)
+const parts = computed(() => splitTitle(title))
 
 const colorClass: Record<ColorType, string> = {
   primary: 'text-red-primary',
@@ -21,6 +22,7 @@ const colorClass: Record<ColorType, string> = {
 
 <template>
   <Heading as="h1" variant="title">
-    {{ firstPart }} <span v-if="lastPart" :class="colorClass[accentColor]">{{ lastPart }}</span>
+    {{ parts.firstPart }}
+    <span v-if="parts.lastPart" :class="colorClass[accentColor]">{{ parts.lastPart }}</span>
   </Heading>
 </template>
