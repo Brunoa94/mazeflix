@@ -3,19 +3,18 @@ import { computed } from 'vue'
 import { ApiError } from '@/shared/types/error'
 import Button from '@/shared/components/Button/Button.vue'
 import Heading from '@/shared/components/Heading/Heading.vue'
-import Link from '@/shared/components/Link/Link.vue'
 import type { RefetchFn } from '@/shared/types/query'
 import { FaceFrownIcon } from '@heroicons/vue/24/outline'
 import { getErrorMessage } from '@/shared/helpers/getErrorMessage'
 
 interface Props {
-  error: ApiError
+  error: ApiError | Error
   onRetry?: RefetchFn
 }
 
 const { error, onRetry } = defineProps<Props>()
 
-const message = computed(() => getErrorMessage(error))
+const message = computed(() => getErrorMessage({ error }))
 </script>
 
 <template>

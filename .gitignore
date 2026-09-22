@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+.env
 
 # Editor directories and files
 .vscode/*
@@ -27,10 +28,6 @@ coverage
 *.tsbuildinfo
 
 .eslintcache
-
-# Cypress
-/cypress/videos/
-/cypress/screenshots/
 
 # Vitest
 __screenshots__/

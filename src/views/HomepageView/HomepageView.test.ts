@@ -6,6 +6,7 @@ import ShowCatalogue from '@/features/showCatalogue/components/ShowCatalogue.vue
 import ShowCatalogueShimmer from '@/features/showCatalogue/components/ShowCatalogueShimmer.vue'
 import { createMockShow } from '@/shared/mock/createMockShow'
 import type { CatalogueType } from '@/features/showCatalogue/types/catalogue'
+import { ApiError } from '@/shared/types/error'
 
 vi.mock('@/features/showCatalogue/composables/useShowCatalogue', () => ({
   default: vi.fn(),
@@ -35,13 +36,13 @@ describe('HomepageView', () => {
       isSuspense: computed(() => false),
       isEmpty: computed(() => true),
       item: ref(new Map()),
-      error: ref(new Error('Failed')),
+      error: ref(new ApiError(500, 'Failed', 'SHOW_CATALOGUE')),
       refetch: mockRefetch,
     })
 
     const wrapper = mount(HomepageView)
 
-    expect(wrapper.text()).toContain('Failed')
+    expect(wrapper.text()).toContain('We could not load the shows right now')
   })
 
   it('renders catalogue component', () => {
