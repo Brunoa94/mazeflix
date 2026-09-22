@@ -18,9 +18,7 @@ export default function useShowCatalogue({ page }: Props): UseQueryType<Catalogu
     refetch,
   } = useQuery(showCatalogQuery({ page }))
 
-  const item = computed(() =>
-    mapTvMazeShowToCatalogue({ tvMazeShows: tvMazeShows.value ?? [] }),
-  )
+  const item = computed(() => mapTvMazeShowToCatalogue({ tvMazeShows: tvMazeShows.value ?? [] }))
   const isSuspense = computed(() => isLoading.value || isPending.value)
   const isEmpty = computed(() => item.value.size === 0)
 

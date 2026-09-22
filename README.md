@@ -61,7 +61,7 @@ As described in the architecture section, the core of the design system is the a
 
 ### Error Handling
 
-For error handling, a new class was created. The error is caught in the root API client, where it is mapped to the application error class and finally exposed through the query state of `@pinia/colada` to the UI side. Creating a class that is reused across all errors makes it possible to identify the endpoint associated with each error and, in the UI component, display a customized message based on the endpoint and status code. Currently, the UI uses the shared `AppError` component to display the error message, based on the endpoint, and the query's `refetch` function to retry the request. The UI of the error states could also be improved, with a better design and a mapping also based on the status code.
+For error handling, a new class was created. The error is caught in the root API client, where it is mapped to the application error class and finally exposed through the query state of `@pinia/colada` to the UI side. Creating a class that is reused across all errors makes it possible to identify the endpoint associated with each error and, in the UI component, display a customized message based on the endpoint and status code. Currently, the UI uses the shared `ApiError` component to display the error message (based on the endpoint) and the query's `refetch` function to retry the request. The UI of the error states could also be improved, with a better design and a mapping also based on the status code. If in the future implementing observability and monitoring would be a goal I would extend the `ApiError` from Error class in order to get also the stack trace.
 
 ### API side abstraction
 

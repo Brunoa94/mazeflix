@@ -10,7 +10,11 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section v-if="genres.length" class="flex flex-col items-center gap-3" aria-labelledby="genres-heading">
+  <section
+    v-if="genres.length"
+    class="flex flex-col items-center gap-3"
+    aria-labelledby="genres-heading"
+  >
     <Heading id="genres-heading" as="h2" variant="details-title">Genres</Heading>
     <ul class="flex items-center justify-center gap-3 list-none" aria-label="Show genres">
       <Chip v-for="genre in genres" :key="genre" as="li" variant="outlined">
